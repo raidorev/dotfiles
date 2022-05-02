@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
+# Script for getting current weather info
+# You need to specify OPENWEATHER_KEY, OPENWEAHER_CITY_ID
+# and OPENWEATHER_UNITS somewhere in your environment
 
-KEY="503629bb8af3fe99ae9d8c80c148a0bb"
-CITY_ID="1520240"
-UNITS="metric"
-weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="$KEY"&id="$CITY_ID"&units="$UNITS"")
+weather=$(curl -sf "http://api.openweathermap.org/data/2.5/weather?appid=$OPENWEATHER_KEY&id=$OPENWEATHER_CITY_ID&units=$OPENWEATHER_UNITS")
 
 if [ -z "$weather" ]; then
     exit
