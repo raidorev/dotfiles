@@ -1,0 +1,50 @@
+(defvar weather-temperature "N/A")
+(defvar weather-feels-like "N/A")
+(defvar weather-icon "N/A")
+(defvar weather-description "N/A")
+(defvar weather-city "N/A")
+(defvar weather-wind-speed "N/A")
+(defvar weather-wind-angle "N/A")
+(defvar weather-humidity "N/A")
+
+(defwidget weather []
+  (box :orientation "h" :class "weather" :space-evenly false
+    (box
+      :orientation "v"
+      :valign "center"
+      :halign "center"
+      :width 130
+      :space-evenly false
+      :class "weather__main"
+      (box
+        :class "weather__temperature"
+        :space-evenly false
+        :halign "center"
+        "${weather-temperature}°"
+      )
+      (box
+        :class "weather__feels-like"
+        :space-evenly false
+        :halign "center"
+        "Feels like ${weather-feels-like}°"
+      )
+      ; (box :class "weather__location" {weather-city})
+    )
+    (box :orientation "v" :space-evenly false
+      (box
+        :orientation "v"
+        :class "weather__info"
+        :space-evenly false
+        :valign "center"
+        :halign "center"
+        :width 130
+        (box :class "weather__icon" {weather-icon})
+        (box :class "weather__description"  :valign "center" :halign "center" {weather-description})
+      )
+      (box
+        :class "weather__aux"
+        "${weather-humidity}% ${weather-wind-speed}m/s"
+      )
+    )
+  )
+)

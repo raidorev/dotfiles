@@ -1,0 +1,104 @@
+(defwindow launcher
+  :monitor 0
+  :geometry (geometry
+    :x "8px"
+    :y "8px"
+    :width "36px"
+    :height "36px"
+    :anchor "top left"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "44px" :side "left")
+  :windowtype "dock"
+  :wm-ignore false
+  (launcher)
+)
+
+(defwindow desktops
+  :monitor 0
+  :geometry (geometry
+    :x "8px"
+    :y "52px"
+    :width "36px"
+    :anchor "top left"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "44px" :side "left")
+  :windowtype "dock"
+  :wm-ignore false
+  (desktops)
+)
+
+(defwindow datetime
+  :monitor 0
+  :geometry (geometry
+    :x "8px"
+    :y "-8px"
+    :width "36px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :reserve (struts :distance "44px" :side "left")
+  :windowtype "dock"
+  :wm-ignore false
+  (datetime)
+)
+
+(defwidget launcher []
+  (box
+    :class "launcher"
+    :orientation "v"
+    (button
+      :class "launcher__icon"
+      :onclick "widgets/bar/scripts/popup launcher"
+      ""
+    )
+  )
+)
+
+(deflisten desktops-content "widgets/bar/scripts/desktops")
+(defwidget desktops []
+  (literal :content desktops-content)
+)
+
+(defpoll hour :interval "1s" "date '+%H'")
+(defpoll minute :interval "1s" "date '+%M'")
+(defpoll weekday :interval "1m" "date '+%a'")
+(defpoll month :interval "1h" "date '+%b'")
+(defpoll month-day :interval "1m" "date '+%-d'")
+
+(defwidget datetime []
+  (button
+    :onclick "widgets/bar/scripts/popup calendar"
+    (box
+      :class "datetime"
+      :orientation "v"
+      :space-evenly false
+      (label :class "datetime__time" :valign "end" :text "${hour}")
+      (label :class "datetime__time" :valign "start" :text "${minute}")
+      (label :class "datetime__delimiter")
+      (label :class "datetime__date" :valign "start" :text "${weekday}")
+      (label :class "datetime__date" :valign "end" :text "${month-day}")
+      (label :class "datetime__date" :valign "end" :text "${month}")
+    )
+  )
+)
+
+(defpoll calendar-day :interval "1m" "date '+%d'")
+(defpoll calendar-month :interval "10h" "echo $(($(date '+%-m') - 1))")
+(defpoll calendar-year :interval "10h" "date '+%Y'")
+
+(defwindow calendar
+  :geometry (geometry
+    :x "53px"
+    :y "-8px"
+    :anchor "bottom left"
+    :width "270px"
+    :height "60px"
+  )
+  (calendar
+    :day calendar-day
+    :month calendar-month
+    :year calendar-year
+  )
+)

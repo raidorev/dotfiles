@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# All BSPWM configuration
+
+# Strict mode
+set -euo pipefail
+shopt -s inherit_errexit
+
+function bc() {
+    bspc config "$@"
+}
+
+bc normal_border_color "#d9e0ee"
+bc active_border_color "#f28fad"
+bc focused_border_color "#f28fad"
+bc presel_feedback_color "#1e1e2e"
+bc borderless_monocle true
+bc pointer_modifier mod1
+bc pointer_action1 move
+bc pointer_action2 resize_side
+bc pointer_action3 resize_corner
+bc click_to_focus none
+bc focus_follows_pointer true
+bc pointer_follows_monitor true
+bc remove_disabled_monitors true
+bc remove_unplugged_monitors true
+bc merge_overlapping_monitors true
+bc border_width 1
+# bspc config left_padding 45
+bc window_gap 8

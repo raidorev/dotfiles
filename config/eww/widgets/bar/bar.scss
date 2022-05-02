@@ -1,0 +1,112 @@
+* {
+  all: unset;
+}
+
+$rosewater: #f5e0dc;
+$flamingo: #f2cdcd;
+$mauve: #ddb6f2;
+$pink: #f5c2e7;
+$maroon: #e8a2af;
+$red: #f28fad;
+$peach: #f8bd96;
+$yellow: #fae3b0;
+$green: #abe9b3;
+$teal: #b5e8e0;
+$blue: #96cdfb;
+$sky: #89dceb;
+$lavender: #c9cbff;
+
+$black0: #161320;
+$black1: #1a1826;
+$black2: #1e1e2e;
+$black3: #302d41;
+$black4: #575268;
+$gray0: #6e6c7e;
+$gray1: #988ba2;
+$gray2: #c3bac6;
+$white: #d9e0ee;
+
+$background: $black2;
+$foreground: $white;
+$accent: $pink;
+
+$font-icons: "Font Awesome 6 Free";
+$font-serif: "Lekton Nerd Font";
+$font-sans-serif: "FantasqueSansMono Nerd Font";
+$font-monospace: "FantasqueSansMono Nerd Font";
+
+.launcher {
+  background-color: $background;
+
+  &__icon {
+    color: $foreground;
+    font-family: $font-icons;
+    font-size: 1.35em;
+  }
+}
+
+.desktops {
+  font-family: $font-icons;
+  background-color: $background;
+  padding-top: 0.4rem;
+}
+
+.desktop {
+  color: $foreground;
+  margin-bottom: 0.6rem;
+
+  &_occupied {
+    color: $foreground;
+  }
+
+  &_focused {
+    color: $accent;
+  }
+}
+
+.datetime {
+  background-color: $background;
+  color: $foreground;
+  padding: 0.2rem;
+
+  &__time {
+    font-family: $font-icons;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  &__delimiter {
+    font-size: 0.2em;
+  }
+
+  &__date {
+    font-family: $font-serif;
+    font-weight: bold;
+    font-size: 0.8em;
+  }
+}
+
+calendar {
+  background-color: $background;
+  color: $foreground;
+
+  .header {
+    background-color: $gray0;
+  }
+
+  .button {
+    background-color: $gray0;
+  }
+
+  &:selected {
+    color: $accent;
+  }
+
+  &.highlight {
+    color: $accent;
+  }
+
+  &:indeterminate {
+    color: $gray0;
+  }
+}

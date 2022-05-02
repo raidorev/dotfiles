@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      relink: true
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/.config/bspwm: config/bspwm
+    ~/.config/dunst: config/dunst
+    ~/.config/eww: config/eww
+    ~/.config/gtk-3.0: config/gtk-3.0
+    ~/.config/kitty: config/kitty
+    ~/.config/rofi: config/rofi
+    ~/.config/sxhkd: config/sxhkd
+
+- create:
+    - ~/Downloads
+    - ~/Wallpapers
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

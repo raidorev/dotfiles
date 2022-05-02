@@ -1,0 +1,43 @@
+#!/bin/sh
+
+calendar() {
+    LOCK_FILE="$HOME/.cache/eww-calendar.lock"
+
+    run() {
+        # eww -c $HOME/.config/eww/bar open calendar
+        eww open calendar
+    }
+
+    # Run eww daemon if not running
+    if [[ ! $(pidof eww) ]]; then
+        eww daemon
+        sleep 1
+    fi
+
+    # Open widgets
+    if [[ ! -f "$LOCK_FILE" ]]; then
+        touch "$LOCK_FILE"
+        run
+    else
+        # eww -c $HOME/.config/eww/bar close calendar
+        eww close calendar
+        rm "$LOCK_FILE"
+    fi
+}
+
+if [ "$1" = "launcher" ]; then
+    rofi -show drun -xoffset +53 -yoffset +8 -location 1
+    # rofi -no-lazy-grab \
+    #     -disable-history \
+    #     -location 1 \
+    #     -xoffset +55 -yoffset +10
+    # -modi "drun" -show drun \
+    # -font "Comic Mono 10" \
+    # -theme ~/.config/rofi/launcher.rasi \
+elif [ "$1" = "wifi" ]; then
+    kitty -e nmtui
+elif [ "$1" = "audio" ]; then
+    pavucontrol
+elif [ "$1" = "calendar" ]; then
+    calendar
+fi

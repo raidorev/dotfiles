@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# This script generates an EWW widget for BSPWM desktops.
+# The widget consists of a box with a `desktops` class and
+# buttons with several classes:
+#   1. `desktop` - always
+#   2. `desktop_occupied` - if the desktop is occupied
+#   3. `desktop_focused` - if the desktop is focused
+
+# Strict mode
+set -euo pipefail
+shopt -s inherit_errexit
+
+is_desktop_occupied() {
+    bspc query -D -d .occupied --names | { grep "$1" || true; }
+}
+
+is_desktop_focused() {
+    bspc query -D -d .focused --names | { grep "$1" || true; }
+}
+
+generate_class_for_desktop() {
+    local class="desktop" desktop_occupied desktop_focused
+
+    desktop_occupied=$(is_desktop_occupied "$1")
+    desktop_focused=$(is_desktop_focused "$1")
+
+    if [[ -n ${desktop_occupied} ]]; then
+        class="${class} desktop_occupied"
+    fi
+    if [[ -n ${desktop_focused} ]]; then
+        class="${class} desktop_focused"
+    fi
+
+    echo "${class}"
+}
+
+get_icon_for_desktop() {
+    local icon desktop_occupied desktop_focused
+
+    desktop_occupied=$(is_desktop_occupied "$1")
+    desktop_focused=$(is_desktop_focused "$1")
+
+    if [[ -n ${desktop_occupied} ]]; then
+        icon=""
+    else
+        icon=""
+    fi
+
+    echo "${icon}"
+}
+
+generate_eww_button() {
+    local class
+    class=$(generate_class_for_desktop "$1")
+    echo "(button :onclick \"bspc desktop -f $1\" :class \"${class}\" \"$2\")"
+}
+
+generate_eww_box() {
+    local desktops=(1 2 3 4 5 6 7 8 9 0)
+
+    local buttons=""
+    for i in "${!desktops[@]}"; do
+        local button icon
+        icon=$(get_icon_for_desktop "${desktops[${i}]}")
+        button=$(generate_eww_button "${desktops[${i}]}" "${icon}")
+        buttons+=${button}
+    done
+
+    echo "(box :class \"desktops\" :orientation \"v\" ${buttons})"
+}
+
+generate_eww_box
+
+# When any desktops related event occurs, the widget is updated
+bspc subscribe desktop node_transfer node_add node_remove | while read -r _; do
+    generate_eww_box
+done

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# All BSPWM rules
+
+# Strict mode
+set -euo pipefail
+shopt -s inherit_errexit
+
+bspc rule -a firefox -o desktop=2

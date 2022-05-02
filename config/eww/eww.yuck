@@ -1,0 +1,13 @@
+(include "./widgets/weather/weather.yuck")
+(include "./widgets/bar/bar.yuck")
+
+(defpoll date :interval "1m" "date '+%b %d'")
+
+(defwindow weather
+  :geometry (geometry :x "-5%" :y "10%" :anchor "top right")
+  :stacking "bg"
+  :focusable true
+  :monitor 0
+  :windowtype "dock"
+  :wm-ignore true
+  (weather :date {date}))
