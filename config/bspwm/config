@@ -25,5 +25,4 @@ bc remove_disabled_monitors true
 bc remove_unplugged_monitors true
 bc merge_overlapping_monitors true
 bc border_width 1
-# bspc config left_padding 45
 bc window_gap 8

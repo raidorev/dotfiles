@@ -24,3 +24,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [
+        chmod +x ~/.config/bspwm/bspwmrc && chmod +x ~/.config/bspwm/config && chmod +x ~/.config/bspwm/rules,
+        Making bspwmrc configuration files executeble,
+      ]

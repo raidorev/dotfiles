@@ -8,7 +8,7 @@ shopt -s inherit_errexit
 
 setxkbmap -option grp:alt_shift_toggle us,ru &
 
-pgrep -x sxhkd >/dev/null || sxhkd &
+pgrep -x sxhkd >/dev/null || sxhkd -m 1 &
 pgrep -x picom >/dev/null || picom &
 pgrep -x dunst >/dev/null || dunst &
 ~/.fehbg
@@ -16,11 +16,5 @@ pgrep -x dunst >/dev/null || dunst &
 # TODO: Multi-monitor layout
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-./config
-./rules
-
-# bspc rule -a Gimp desktop='^8' state=floating follow=on
-# bspc rule -a Chromium desktop='^2'
-# bspc rule -a mplayer2 state=floating
-# bspc rule -a Kupfer.py focus=on
-# bspc rule -a Screenkey manage=off
+~/.config/bspwm/config
+~/.config/bspwm/rules
