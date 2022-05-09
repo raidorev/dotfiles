@@ -8,6 +8,8 @@
       recursive: true
 
 - link:
+    ~/.zshrc: config/zshrc
+    ~/.zimrc: config/zimrc
     ~/.config/bspwm: config/bspwm
     ~/.config/dunst: config/dunst
     ~/.config/eww: config/eww
