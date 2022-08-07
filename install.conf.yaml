@@ -8,6 +8,7 @@
       recursive: true
 
 - link:
+    ~/bin: bin
     ~/.zshrc: config/zshrc
     ~/.zimrc: config/zimrc
     ~/.config/bspwm: config/bspwm
@@ -19,6 +20,7 @@
     ~/.config/sxhkd: config/sxhkd
 
 - create:
+    - ~/bin
     - ~/Downloads
     - ~/Wallpapers
 
@@ -26,5 +28,5 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [
         chmod +x ~/.config/bspwm/bspwmrc && chmod +x ~/.config/bspwm/config && chmod +x ~/.config/bspwm/rules,
-        Making bspwmrc configuration files executeble,
+        Making bspwmrc configuration files executable,
       ]
