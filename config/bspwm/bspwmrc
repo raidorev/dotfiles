@@ -6,6 +6,20 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+# If secondary monitor connected
+if xrandr -q | grep -q 'HDMI-0 connected'; then
+  xrandr \
+    --output HDMI-0 --mode 1366x768 --pos 0x794 --rotate right \
+    --output DP-0 --primary --mode 3840x2160 --pos 768x0 --rotate normal &
+
+  bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9
+  bspc monitor HDMI-0 -d 10
+else
+  xrandr --output DP-0 --primary --mode 3840x2160 --pos 768x0 --rotate normal &
+
+  bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9 10
+fi
+
 setxkbmap -option grp:alt_shift_toggle us,ru &
 
 pgrep -x sxhkd >/dev/null || sxhkd -m 1 &
@@ -13,8 +27,6 @@ pgrep -x picom >/dev/null || picom &
 pgrep -x dunst >/dev/null || dunst &
 ~/.fehbg
 
-# TODO: Multi-monitor layout
-bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 ~/.config/bspwm/config
 ~/.config/bspwm/rules
