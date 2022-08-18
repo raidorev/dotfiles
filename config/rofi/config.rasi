@@ -1,7 +1,7 @@
 configuration {
   modi: "run,drun,window,emoji";
   lines: 5;
-  font: "JetBrainsMono Nerd Font 12";
+  font: "JetBrainsMono Nerd Font 18";
   show-icons: true;
   icon-theme: "Oranchelo";
   terminal: "kitty";
@@ -25,7 +25,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-  height: 360px;
+  width: 860px;
+  height: 540px;
   border: 3px;
   border-color: @border-col;
   background-color: @bg-col;
