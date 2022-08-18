@@ -143,3 +143,6 @@ alias dig=dog
 alias du=dust
 alias find=fd
 alias ls=lsd
+
+export PATH="$PATH:$HOME/.yarn/bin"
+
