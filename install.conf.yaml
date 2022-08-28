@@ -16,6 +16,7 @@
     ~/.config/eww: config/eww
     ~/.config/gtk-3.0: config/gtk-3.0
     ~/.config/kitty: config/kitty
+    ~/.config/nvim/lua/user: config/nvim/lua/user
     ~/.config/rofi: config/rofi
     ~/.config/sxhkd: config/sxhkd
 
