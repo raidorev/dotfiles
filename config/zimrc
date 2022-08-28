@@ -46,6 +46,7 @@ zmodule completion
 
 # Fish-like syntax highlighting for Zsh.
 # zsh-users/zsh-syntax-highlighting must be sourced after completion
+zmodule catppuccin/zsh-syntax-highlighting --name catppuccin --source catppuccin-zsh-syntax-highlighting.zsh
 zmodule zsh-users/zsh-syntax-highlighting
 # Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
@@ -55,3 +56,4 @@ zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
 zmodule wfxr/forgit
+
