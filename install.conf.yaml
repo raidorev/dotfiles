@@ -11,6 +11,7 @@
     ~/bin: bin
     ~/.zshrc: config/zshrc
     ~/.zimrc: config/zimrc
+    ~/.editorconfig: config/editorconfig
     ~/.config/bspwm: config/bspwm
     ~/.config/dunst: config/dunst
     ~/.config/eww: config/eww
