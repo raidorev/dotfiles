@@ -194,6 +194,8 @@ local config = {
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+      ["s"] = { "<Plug>(leap-forward)" },
+      ["S"] = { "<Plug>(leap-backward)" },
     },
     t = {
       -- setting a mapping to false will disable it
@@ -214,6 +216,10 @@ local config = {
         "catppuccin/nvim",
         as = "catppuccin",
         config = function() require("catppuccin").setup {} end,
+      },
+      {
+        "ggandor/leap.nvim",
+        config = function() require("leap").set_default_keymaps() end,
       },
       -- { "andweeb/presence.nvim" },
       -- {
