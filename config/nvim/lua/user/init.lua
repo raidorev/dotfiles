@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "catppuccin",
 
   -- Override highlight groups in any theme
   highlights = {
@@ -48,6 +48,7 @@ local config = {
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
+      catppuccin_flavour = "mocha",
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -209,6 +210,11 @@ local config = {
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       { "gpanders/editorconfig.nvim" },
+      {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function() require("catppuccin").setup {} end,
+      },
       -- { "andweeb/presence.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
