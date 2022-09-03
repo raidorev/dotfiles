@@ -224,6 +224,10 @@ local config = {
         "ggandor/leap.nvim",
         config = function() require("leap").set_default_keymaps() end,
       },
+      {
+        "kylechui/nvim-surround",
+        config = function() require("nvim-surround").setup {} end,
+      },
       -- { "andweeb/presence.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
