@@ -22,11 +22,20 @@ fi
 
 setxkbmap -option grp:alt_shift_toggle us,ru &
 
-pgrep -x sxhkd >/dev/null || sxhkd -m 1 &
-pgrep -x picom >/dev/null || picom &
-pgrep -x dunst >/dev/null || dunst &
-~/.fehbg
+#######################################
+# Start program if not started
+# Arguments:
+#   Executable
+#######################################
+start_program() {
+  pgrep -x "$1" >/dev/null || "$1" &
+}
 
+start_program "sxhkd -m 1"
+start_program picom
+start_program dunst
+~/.fehbg
 
 ~/.config/bspwm/config
 ~/.config/bspwm/rules
+

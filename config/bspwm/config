@@ -24,5 +24,6 @@ bc pointer_follows_monitor true
 bc remove_disabled_monitors true
 bc remove_unplugged_monitors true
 bc merge_overlapping_monitors true
-bc border_width 1
-bc window_gap 8
+bc border_width 3
+bc window_gap 15
+
