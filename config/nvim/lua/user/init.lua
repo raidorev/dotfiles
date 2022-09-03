@@ -175,6 +175,9 @@ local config = {
       --     client.resolved_capabilities.document_formatting = false
       --   end
       -- }
+      volar = {
+        on_attach = function(client, bufnr) client.resolved_capabilities.document_formatting = false end,
+      },
     },
   },
 
