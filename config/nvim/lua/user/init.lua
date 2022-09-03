@@ -228,6 +228,12 @@ local config = {
         "kylechui/nvim-surround",
         config = function() require("nvim-surround").setup {} end,
       },
+      {
+        "danymat/neogen",
+        cmd = "Neogen",
+        config = function() require("neogen").setup {} end,
+        requires = "nvim-treesitter/nvim-treesitter",
+      },
       -- { "andweeb/presence.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
