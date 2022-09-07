@@ -28,7 +28,7 @@ setxkbmap -option grp:alt_shift_toggle us,ru &
 #   Executable
 #######################################
 start_program() {
-  pgrep -x "$1" >/dev/null || "$1" &
+  pgrep -x "$1" >/dev/null || $1 &
 }
 
 start_program "sxhkd -m 1"
