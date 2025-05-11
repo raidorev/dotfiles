@@ -1,0 +1,7 @@
+@import "catppuccin-mocha"
+@import "catppuccin-default"
+
+configuration {
+  modes: "window,drun,run";
+  font: "Inter 14";
+}

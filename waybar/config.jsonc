@@ -1,0 +1,172 @@
+{
+  "layer": "top",
+
+  "modules-left": [
+    "power-profiles-daemon",
+    "custom/weather",
+    "cpu",
+    "memory",
+    "mpris",
+    "tray"
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [
+    "custom/updates",
+    "network",
+    "backlight",
+    "wireplumber",
+    "clock",
+    "battery",
+    "hyprland/language",
+    "systemd-failed-units",
+    "group/power"
+  ],
+
+  "systemd-failed-units": {
+    "format": " {nr_failed}"
+  },
+
+  "group/power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"]
+  },
+  "custom/quit": {
+    "format": "󰗼",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+
+  "wireplumber": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-muted": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["title", "artist"],
+    "title-len": 25,
+    "artist-len": 25
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀 {eesid}",
+    "tooltip-format": "{bandwidthUpBits}{bandwidthDownBits} {essid} (on {ifname}, {signalStrength}%)",
+    "interval": 1
+  },
+
+  "backlight": {
+    "tooltip": false,
+    "format": " {}%",
+    "interval": 1,
+    "on-scroll-up": "brightnessctl -n s +5%",
+    "on-scroll-down": "brightnessctl -n s 5%-",
+    "reverse-scrolling": true,
+    "min-brightness": 1
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+
+  "hyprland/language": {
+    "format": " {}",
+    "format-en": "ENG",
+    "format-ru": "РУС"
+  },
+
+  "clock": {
+    "format": " {:%I:%M %p}",
+    "format-alt": " {:%a, %b %d, %Y (%I:%M %p)}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#f9e2af'>{}</span>",
+        "weekdays": "<span color='#fab387'>{}</span>",
+        "today": "<span color='#f38ba8'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+
+  "cpu": {
+    "interval": 15,
+    "format": " {}%"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "custom/updates": {
+    "format": " {}",
+    "exec": "checkupdates | wc -l",
+    "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+    "interval": 15,
+    "on-click": "kitty -e paru -Syu && notify-send 'The system has been updated'"
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "exec": "curl 'wttr.in/?format=%c%t'",
+    "interval": 3600
+  }
+}

@@ -1,0 +1,22 @@
+dotfiles_dir = "dotfiles"
+
+[settings]
+prehooks = ["mkdir -p ~/.gnupg"]
+
+posthooks = [
+    "chmod +x ~/bin/*",
+    "chmod +x ~/.config/rofi/scripts/1password.sh",
+    "chmod +x ~/.config/rofi/polkit-agent",
+]
+
+[settings.dots]
+bin = { source = "bin", target = "bin" }
+gnupg = { source = "gnupg/gpg-agent.conf", target = ".gnupg/gpg-agent.conf" }
+zsh = { source = "zsh/zshrc", target = ".zshrc" }
+hyprland = { source = "hyprland", target = ".config/hypr" }
+waybar = { source = "waybar", target = ".config/waybar" }
+wallpapers = { source = "wallpapers", target = "wallpapers" }
+rofi = { source = "rofi", target = ".config/rofi" }
+electron_flags = { source = "electron/electron-flags.conf", target = ".config/electron-flags.conf" }
+spotify_flags = { source = "electron/spotify-flags.conf", target = ".config/spotify-flags.conf" }
+kvantum = { source = "kvantum", target = ".config/Kvantum" }

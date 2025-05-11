@@ -1,0 +1,71 @@
+@import "./mocha.css";
+
+* {
+  font-family: 'Inter', 'JetBrainsMono Nerd Font Propo';
+}
+
+.module {
+  padding: 0 8px;
+  margin: 8px 0 0;
+  background-color: @base;
+  border-radius: 8px;
+}
+
+tooltip {
+  background-color: @base;
+}
+
+#waybar {
+  background-color: transparent;
+}
+
+#waybar.hidden {
+  opacity: 0.2;
+}
+
+.modules-left {
+  margin-left: 10px;
+}
+
+.modules-left .module {
+  margin-right: 4px;
+}
+
+.modules-right {
+  margin-right: 10px;
+}
+
+.modules-right .module {
+  margin-left: 4px;
+}
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button.active {
+  color: @rosewater;
+}
+
+#workspaces button:hover {
+  color: @rosewater;
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#systemd-failed-units {
+  background-color: @red;
+}
+
+@keyframes blink {
+  to {
+    color: @base;
+    background-color: @red;
+  }
+}
