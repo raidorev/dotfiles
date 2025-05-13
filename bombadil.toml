@@ -10,6 +10,7 @@ posthooks = [
 ]
 
 [settings.dots]
+yazi = { source = "yazi", target = ".config/yazi" }
 bin = { source = "bin", target = "bin" }
 gnupg = { source = "gnupg/gpg-agent.conf", target = ".gnupg/gpg-agent.conf" }
 zsh = { source = "zsh/zshrc", target = ".zshrc" }
