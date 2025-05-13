@@ -50,3 +50,4 @@ zinit snippet OMZ::plugins/yarn/yarn.plugin.zsh
 path+=$PWD/bin
 
 eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(zoxide init zsh)"
