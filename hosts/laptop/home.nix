@@ -35,6 +35,7 @@
       htop
       telegram-desktop
       discord
+      spotify
       mpv
       nemo-with-extensions
     ];
