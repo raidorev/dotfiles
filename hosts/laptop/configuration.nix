@@ -12,6 +12,7 @@
     ../../modules/niri.nix
     ../../modules/wofi.nix
     ../../modules/firefox.nix
+    ../../modules/helium.nix
     ../../modules/stylix.nix
     ../../modules/fish.nix
     ../../modules/git.nix
