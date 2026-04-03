@@ -19,6 +19,7 @@
     ../../modules/ghostty.nix
     ../../modules/zed.nix
     ../../modules/noctalia.nix
+    ../../modules/vesktop.nix
   ];
 
   hardware.bluetooth.enable = true;
