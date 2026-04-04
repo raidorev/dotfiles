@@ -7,9 +7,8 @@
     ../../modules/nix.nix
     ../../modules/users.nix
     ../../modules/locale.nix
-    ../../modules/hyprland/hyprland.nix
-    ../../modules/quickshell/quickshell.nix
     ../../modules/niri.nix
+    ../../modules/noctalia.nix
     ../../modules/wofi.nix
     ../../modules/firefox.nix
     ../../modules/helium.nix
@@ -18,7 +17,6 @@
     ../../modules/git.nix
     ../../modules/ghostty.nix
     ../../modules/zed.nix
-    ../../modules/noctalia.nix
     ../../modules/vesktop.nix
   ];
 

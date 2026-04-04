@@ -21,6 +21,39 @@ in
     catppuccin-papirus-folders
   ];
 
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      niri = {
+        prettyName = "Niri";
+        comment = "Niri compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/niri";
+      };
+    };
+  };
+
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = ''
+        ${pkgs.tuigreet}/bin/tuigreet \
+          --time \
+          --remember \
+          --remember-session \
+          --sessions /run/current-system/sw/share/wayland-sessions
+      '';
+      user = "greeter";
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config = {
+      niri.default = [ "gtk" ];
+    };
+  };
+
   programs.niri.enable = true;
   home-manager.users.raidorev.programs.niri.settings = {
     spawn-at-startup = [
