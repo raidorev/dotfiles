@@ -48,6 +48,7 @@
     nixfmt
     nixd
     qt6.qtdeclarative
+    kooha
   ];
 
   system.stateVersion = "25.11";
