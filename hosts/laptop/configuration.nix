@@ -18,6 +18,7 @@
     ../../modules/ghostty.nix
     ../../modules/zed.nix
     ../../modules/vesktop.nix
+    ../../modules/tailscale.nix
   ];
 
   services.power-profiles-daemon.enable = true;
@@ -39,7 +40,6 @@
   networking = {
     hostName = "raidorev";
     networkmanager.enable = true;
-    firewall.enable = false;
   };
 
   environment.systemPackages = with pkgs; [
