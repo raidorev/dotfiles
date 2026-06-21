@@ -36,7 +36,7 @@
       telegram-desktop
       discord
       spotify
-      mpv
+      # mpv
       nemo-with-extensions
     ];
 
