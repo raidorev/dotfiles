@@ -6,11 +6,11 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = ../wallpapers/cabin-2.jpg;
 
-    cursor = {
-      package = pkgs.catppuccin-cursors.mochaRosewater;
-      name = "catppuccin-mocha-rosewater-cursors";
-      size = 24;
-    };
+    # cursor = {
+    #   package = pkgs.catppuccin-cursors.mochaRosewater;
+    #   name = "catppuccin-mocha-rosewater-cursors";
+    #   size = 24;
+    # };
 
     icons = {
       enable = true;

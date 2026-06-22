@@ -17,8 +17,8 @@ in
 {
   imports = [ inputs.niri.nixosModules.niri ];
   environment.systemPackages = with pkgs; [
-    catppuccin-cursors
-    catppuccin-papirus-folders
+    # catppuccin-cursors
+    # catppuccin-papirus-folders
   ];
 
   services.greetd = {
