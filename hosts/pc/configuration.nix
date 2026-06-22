@@ -21,6 +21,10 @@
     # ../../modules/tailscale.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
@@ -49,6 +53,7 @@
     nixd
     qt6.qtdeclarative
     kooha
+    bitwarden-desktop
   ];
 
   system.stateVersion = "25.11";
