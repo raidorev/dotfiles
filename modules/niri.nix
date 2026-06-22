@@ -55,7 +55,7 @@ in
       focus-follows-mouse.enable = true;
     };
     outputs = {
-      "eDP-1" = {
+      "DP-1" = {
         backdrop-color = config.lib.stylix.colors.base00;
       };
     };
