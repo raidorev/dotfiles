@@ -1,5 +1,13 @@
+{ den, ... }:
 {
   den.aspects.nvidia = { host, ... }: {
+    includes = [
+      (den.provides.unfree [
+        "nvidia-x11"
+        "nvidia-settings"
+      ])
+    ];
+
     nixos = {
       hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
