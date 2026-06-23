@@ -1,11 +1,11 @@
-{ inputs, den, ... }:
+{ inputs, ... }:
 {
   flake-file.inputs.helium = {
     url = "github:schembriaiden/helium-browser-nix-flake";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.helium = {
+  den.aspects.helium = { user, ... }: {
     homeManager = { pkgs, ... }: {
       home.packages = [
         inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default

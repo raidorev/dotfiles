@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.laptop = {
+  den.aspects.laptop = { host, ... }: {
     includes = [
       den.aspects.boot
       den.aspects.locale
@@ -8,7 +8,6 @@
       den.aspects.audio
       den.aspects.git
       den.aspects.ghostty
-      den.aspects.wofi
       den.aspects.firefox
       den.aspects.zed
       den.aspects.stylix

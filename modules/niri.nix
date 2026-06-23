@@ -1,7 +1,13 @@
-{ inputs, den, ... }:
+{ inputs, ... }:
 let
-  noctalia = pkgs: cmd:
-    [ "noctalia-shell" "ipc" "call" ] ++ (pkgs.lib.splitString " " cmd);
+  noctalia =
+    pkgs: cmd:
+    [
+      "noctalia-shell"
+      "ipc"
+      "call"
+    ]
+    ++ (pkgs.lib.splitString " " cmd);
 in
 {
   flake-file.inputs.niri = {
@@ -9,7 +15,7 @@ in
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.niri = {
+  den.aspects.niri = { host, user, ... }: {
     nixos = { pkgs, ... }: {
       imports = [ inputs.niri.nixosModules.niri ];
 
@@ -30,7 +36,7 @@ in
       programs.niri.enable = true;
     };
 
-    homeManager = { pkgs, config, ... }: {
+    homeManager = { pkgs, ... }: {
       programs.niri.settings = {
         spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
         input = {
@@ -43,18 +49,25 @@ in
           };
           focus-follows-mouse.enable = true;
         };
-        outputs."DP-1".backdrop-color = config.lib.stylix.colors.base00;
+        # outputs."DP-1".backdrop-color = config.lib.stylix.colors.base00;
         prefer-no-csd = true;
         layout = {
           gaps = 8;
           border.width = 2;
-          struts = { top = 0; right = 0; bottom = 0; left = 0; };
+          struts = {
+            top = 0;
+            right = 0;
+            bottom = 0;
+            left = 0;
+          };
         };
         window-rules = [
           {
             geometry-corner-radius = {
-              top-left = 8.0; top-right = 8.0;
-              bottom-right = 8.0; bottom-left = 8.0;
+              top-left = 8.0;
+              top-right = 8.0;
+              bottom-right = 8.0;
+              bottom-left = 8.0;
             };
             clip-to-geometry = true;
           }
@@ -63,20 +76,50 @@ in
           "Mod+Tab".action.toggle-overview = { };
           "Mod+Shift+Slash".action.show-hotkey-overlay = { };
 
-          "Mod+T".action.spawn = [ "ghostty" "+new-window" ];
+          "Mod+T".action.spawn = [
+            "ghostty"
+            "+new-window"
+          ];
           "Mod+D".action.spawn = noctalia pkgs "launcher toggle";
           "Super+Alt+L".action.spawn = noctalia pkgs "lockScreen lock";
           "Mod+P".action.spawn = noctalia pkgs "sessionMenu toggle";
 
-          "XF86AudioRaiseVolume" = { allow-when-locked = true; action.spawn = noctalia pkgs "volume increase"; };
-          "XF86AudioLowerVolume" = { allow-when-locked = true; action.spawn = noctalia pkgs "volume decrease"; };
-          "XF86AudioMute" = { allow-when-locked = true; action.spawn = noctalia pkgs "volume muteOutput"; };
-          "XF86AudioMicMute" = { allow-when-locked = true; action.spawn = noctalia pkgs "volume muteInput"; };
-          "XF86AudioPlay" = { allow-when-locked = true; action.spawn = noctalia pkgs "media playPause"; };
-          "XF86AudioNext" = { allow-when-locked = true; action.spawn = noctalia pkgs "media next"; };
-          "XF86AudioPrev" = { allow-when-locked = true; action.spawn = noctalia pkgs "media previous"; };
-          "XF86MonBrightnessUp" = { allow-when-locked = true; action.spawn = noctalia pkgs "brightness increase"; };
-          "XF86MonBrightnessDown" = { allow-when-locked = true; action.spawn = noctalia pkgs "brightness decrease"; };
+          "XF86AudioRaiseVolume" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "volume increase";
+          };
+          "XF86AudioLowerVolume" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "volume decrease";
+          };
+          "XF86AudioMute" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "volume muteOutput";
+          };
+          "XF86AudioMicMute" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "volume muteInput";
+          };
+          "XF86AudioPlay" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "media playPause";
+          };
+          "XF86AudioNext" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "media next";
+          };
+          "XF86AudioPrev" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "media previous";
+          };
+          "XF86MonBrightnessUp" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "brightness increase";
+          };
+          "XF86MonBrightnessDown" = {
+            allow-when-locked = true;
+            action.spawn = noctalia pkgs "brightness decrease";
+          };
 
           "Mod+Q".action.close-window = { };
 
@@ -113,10 +156,22 @@ in
           "Mod+Shift+U".action.move-workspace-down = { };
           "Mod+Shift+I".action.move-workspace-up = { };
 
-          "Mod+WheelScrollDown" = { cooldown-ms = 150; action.focus-workspace-down = { }; };
-          "Mod+WheelScrollUp" = { cooldown-ms = 150; action.focus-workspace-up = { }; };
-          "Mod+Ctrl+WheelScrollDown" = { cooldown-ms = 150; action.move-column-to-workspace-down = { }; };
-          "Mod+Ctrl+WheelScrollUp" = { cooldown-ms = 150; action.move-column-to-workspace-up = { }; };
+          "Mod+WheelScrollDown" = {
+            cooldown-ms = 150;
+            action.focus-workspace-down = { };
+          };
+          "Mod+WheelScrollUp" = {
+            cooldown-ms = 150;
+            action.focus-workspace-up = { };
+          };
+          "Mod+Ctrl+WheelScrollDown" = {
+            cooldown-ms = 150;
+            action.move-column-to-workspace-down = { };
+          };
+          "Mod+Ctrl+WheelScrollUp" = {
+            cooldown-ms = 150;
+            action.move-column-to-workspace-up = { };
+          };
 
           "Mod+WheelScrollRight".action.focus-column-right = { };
           "Mod+WheelScrollLeft".action.focus-column-left = { };

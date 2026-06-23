@@ -1,6 +1,5 @@
-{ den, ... }:
 {
-  den.aspects.ghostty = {
+  den.aspects.ghostty = { user, ... }: {
     homeManager = { pkgs, ... }: {
       home.packages = [ pkgs.ghostty ];
       programs.ghostty = {

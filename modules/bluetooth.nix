@@ -1,8 +1,11 @@
 { den, ... }:
 {
-  den.aspects.bluetooth = {
-    nixos = { ... }: {
-      hardware.bluetooth = { enable = true; powerOnBoot = true; };
+  den.aspects.bluetooth = { host, ... }: {
+    nixos = {
+      hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+      };
     };
   };
 }

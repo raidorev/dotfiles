@@ -1,7 +1,6 @@
-{ den, ... }:
 {
-  den.aspects.pipewire = {
-    nixos = { ... }: {
+  den.aspects.pipewire = { host, ... }: {
+    nixos = {
       security.rtkit.enable = true;
       services.pipewire = {
         enable = true;

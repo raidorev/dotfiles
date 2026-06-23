@@ -1,16 +1,19 @@
-{ inputs, den, ... }:
+{ inputs, ... }:
 {
   flake-file.inputs.nix-index-database = {
     url = "github:nix-community/nix-index-database";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.nix-settings = {
+  den.aspects.nix-settings = { host, user, ... }: {
     nixos = { ... }: {
       imports = [ inputs.nix-index-database.nixosModules.default ];
 
       nix.settings = {
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
         substituters = [
           "https://nix-community.cachix.org"
           "https://hyprland.cachix.org"

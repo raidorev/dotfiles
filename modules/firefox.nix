@@ -1,10 +1,9 @@
-{ den, ... }:
 {
-  den.aspects.firefox = {
-    nixos = { ... }: {
+  den.aspects.firefox = { host, user, ... }: {
+    nixos = {
       programs.firefox.enable = true;
     };
-    homeManager = { ... }: {
+    homeManager = {
       programs.firefox = {
         enable = true;
         profiles.default = {

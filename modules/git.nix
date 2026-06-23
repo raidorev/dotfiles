@@ -1,6 +1,5 @@
-{ den, ... }:
 {
-  den.aspects.git = {
+  den.aspects.git = { host, user, ... }: {
     nixos = { ... }: {
       programs.git.enable = true;
     };

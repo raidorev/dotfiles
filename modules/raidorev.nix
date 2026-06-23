@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.raidorev = {
+  den.aspects.raidorev = { user, ... }: {
     includes = [
       den.batteries.define-user
       den.batteries.primary-user

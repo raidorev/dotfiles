@@ -1,6 +1,5 @@
-{ den, ... }:
 {
-  den.aspects.tailscale = {
+  den.aspects.tailscale = { host, ... }: {
     nixos = { config, ... }: {
       services.tailscale.enable = true;
       networking.nftables.enable = true;

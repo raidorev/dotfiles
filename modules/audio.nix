@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.audio = {
+  den.aspects.audio = { host, ... }: {
     includes = [
       den.aspects.bluetooth
       den.aspects.pipewire

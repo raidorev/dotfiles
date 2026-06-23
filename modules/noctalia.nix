@@ -1,11 +1,11 @@
-{ inputs, den, ... }:
+{ inputs, ... }:
 {
   flake-file.inputs.noctalia = {
     url = "github:noctalia-dev/noctalia/legacy-v4";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.noctalia = {
+  den.aspects.noctalia = { host, user, ... }: {
     nixos = { pkgs, ... }: {
       environment.systemPackages = [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default

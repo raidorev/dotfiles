@@ -1,7 +1,6 @@
-{ den, ... }:
 {
-  den.aspects.nvidia = {
-    nixos = { ... }: {
+  den.aspects.nvidia = { host, ... }: {
+    nixos = {
       hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
