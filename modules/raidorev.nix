@@ -45,6 +45,11 @@
           telegram-desktop
           nemo-with-extensions
 
+          nixfmt
+          nixd
+          qt6.qtdeclarative
+          kooha
+
           discord
           spotify
           claude-code
