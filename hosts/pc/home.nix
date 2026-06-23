@@ -38,6 +38,7 @@
       spotify
       # mpv
       nemo-with-extensions
+      claude-code
     ];
 
   };
