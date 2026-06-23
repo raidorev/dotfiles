@@ -1,7 +1,14 @@
-{ den, ... }:
+{ inputs, den, ... }:
 {
+  flake-file.inputs.nix-index-database = {
+    url = "github:nix-community/nix-index-database";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   den.aspects.nix-settings = {
     nixos = { ... }: {
+      imports = [ inputs.nix-index-database.nixosModules.default ];
+
       nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         substituters = [
@@ -24,6 +31,11 @@
         clean.extraArgs = "--keep-since 4d --keep 3";
         flake = "/etc/nixos";
       };
+      programs.nix-index-database.comma.enable = true;
+    };
+
+    homeManager = { ... }: {
+      programs.nix-index.enable = true;
     };
   };
 }

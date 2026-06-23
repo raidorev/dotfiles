@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.nixos = {
+  den.aspects.laptop = {
     includes = [
       den.aspects.boot
       den.aspects.locale
@@ -10,31 +10,21 @@
       den.aspects.wofi
       den.aspects.firefox
       den.aspects.zed
-      # den.aspects.stylix
+      den.aspects.stylix
       den.aspects.niri
       den.aspects.noctalia
       den.aspects.helium
+      den.aspects.vesktop
+      den.aspects.tailscale
     ];
 
     nixos = { pkgs, ... }: {
-      imports = [ ../_legacy/hosts/pc/hardware-configuration.nix ];
+      imports = [ ../_legacy/hosts/laptop/hardware-configuration.nix ];
 
       networking = {
-        hostName = "nixos";
+        hostName = "raidorev";
         networkmanager.enable = true;
       };
-
-      programs.amnezia-vpn.enable = true;
-
-      hardware.graphics.enable = true;
-      services.xserver.videoDrivers = [ "nvidia" ];
-      hardware.nvidia = {
-        modesetting.enable = true;
-        open = true;
-        nvidiaSettings = true;
-      };
-
-      nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
 
       hardware.bluetooth = {
         enable = true;
@@ -60,7 +50,6 @@
         nixd
         qt6.qtdeclarative
         kooha
-        bitwarden-desktop
       ];
     };
   };
