@@ -1,10 +1,12 @@
 { den, ... }:
 {
-  den.aspects.raidorev = { user, ... }: {
+  den.aspects.raidorev = {
     includes = [
       den.batteries.define-user
       den.batteries.primary-user
       (den.batteries.user-shell "fish")
+
+      den.batteries.host-aspects
 
       # Shame on you, unfree software that I still use for some reason
       (den.provides.unfree [

@@ -1,6 +1,6 @@
 { den, ... }:
 {
-  den.aspects.nixos = { host, ... }: {
+  den.aspects.nixos = {
     includes = [
       den.aspects.boot
       den.aspects.locale
