@@ -6,7 +6,7 @@
   };
 
   den.aspects.nix-settings = { host, user, ... }: {
-    nixos = { ... }: {
+    nixos = {
       imports = [ inputs.nix-index-database.nixosModules.default ];
 
       nix.settings = {
@@ -14,20 +14,9 @@
           "nix-command"
           "flakes"
         ];
-        substituters = [
-          "https://nix-community.cachix.org"
-          "https://hyprland.cachix.org"
-          "https://niri.cachix.org"
-          "https://noctalia.cachix.org"
-        ];
-        trusted-public-keys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-        ];
+        substituters = [ "https://nix-community.cachix.org" ];
+        trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
       };
-      nixpkgs.config.allowUnfree = true;
       programs.nh = {
         enable = true;
         clean.enable = true;
@@ -37,7 +26,7 @@
       programs.nix-index-database.comma.enable = true;
     };
 
-    homeManager = { ... }: {
+    homeManager = {
       programs.nix-index.enable = true;
     };
   };
