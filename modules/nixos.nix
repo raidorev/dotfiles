@@ -1,21 +1,12 @@
 { den, ... }:
 {
-  den.aspects.nixos = {
+  den.aspects.nixos = { host, ... }: {
     includes = [
       den.aspects.boot
       den.aspects.locale
       den.aspects.nix-settings
       den.aspects.audio
       den.aspects.nvidia
-      den.aspects.git
-      den.aspects.ghostty
-      den.aspects.wofi
-      den.aspects.firefox
-      den.aspects.zed
-      # den.aspects.stylix
-      den.aspects.niri
-      den.aspects.noctalia
-      den.aspects.helium
     ];
 
     nixos = { pkgs, ... }: {

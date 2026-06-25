@@ -1,12 +1,20 @@
 { den, ... }:
 {
-  den.aspects.raidorev = {
+  den.aspects.raidorev = { user, host, ... }: {
     includes = [
       den.batteries.define-user
       den.batteries.primary-user
       (den.batteries.user-shell "fish")
 
-      den.batteries.host-aspects
+      den.aspects.git
+      den.aspects.ghostty
+      den.aspects.wofi
+      den.aspects.firefox
+      den.aspects.zed
+      # den.aspects.stylix
+      den.aspects.niri
+      den.aspects.noctalia
+      den.aspects.helium
 
       # Shame on you, unfree software that I still use for some reason
       (den.provides.unfree [
@@ -14,6 +22,11 @@
         "spotify"
         "claude-code"
       ])
+    ];
+
+    nixos.users.users.raidorev.extraGroups = [
+      "networkmanager"
+      "input"
     ];
 
     homeManager = { pkgs, ... }: {
