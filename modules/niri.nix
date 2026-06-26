@@ -41,8 +41,10 @@ in
       programs.niri.enable = true;
     };
 
-    homeManager = { pkgs, ... }: {
+    homeManager = { lib, pkgs, ... }: {
       programs.niri.settings = {
+        xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+
         spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
         input = {
           keyboard = {
@@ -229,6 +231,7 @@ in
           "Mod+Shift+E".action.quit = { };
           "Mod+Shift+P".action.power-off-monitors = { };
         };
+
       };
     };
   };
