@@ -62,6 +62,7 @@
 
           nixfmt
           nixd
+          nil
           qt6.qtdeclarative
           kooha
 
