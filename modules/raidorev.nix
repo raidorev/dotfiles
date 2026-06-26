@@ -15,6 +15,7 @@
       <niri>
       <noctalia>
       <helium>
+      <fastfetch>
 
       # Shame on you, unfree software that I still use for some reason
       (den.provides.unfree [
