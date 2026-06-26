@@ -117,7 +117,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "nixpkgs-lib"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -432,9 +432,6 @@
         "niri": "niri",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-lib": [
-          "nixpkgs"
-        ],
         "noctalia": "noctalia",
         "stylix": "stylix"
       }

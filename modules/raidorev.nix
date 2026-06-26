@@ -1,6 +1,6 @@
 { den, __findFile, ... }:
 {
-  den.aspects.raidorev = { user, host, ... }: {
+  den.aspects.raidorev = { host, ... }: {
     includes = [
       <den/define-user>
       <den/primary-user>
