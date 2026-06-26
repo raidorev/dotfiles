@@ -1,4 +1,3 @@
-{ den, ... }:
 {
   den.aspects.bluetooth = { host, ... }: {
     nixos = {

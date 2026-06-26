@@ -1,25 +1,21 @@
 { __findFile, ... }:
 {
   den.aspects.nixos = { host, ... }: {
-    includes = [
-      <boot>
-      <locale>
-      <nix-settings>
-      <audio>
-      <nvidia>
-    ];
+    includes = [ <hosts/base> ];
 
-    nixos = { pkgs, ... }: {
+    nixos = {
       imports = [ ../hosts/pc/hardware-configuration.nix ];
+    };
 
-      networking.networkmanager.enable = true;
+    homeManager = { config, ... }: {
 
-      programs.amnezia-vpn.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        vim
-        wget
-      ];
+      programs.niri.settings.outputs."DP-1" = {
+        mode = {
+          width = 2560;
+          height = 1440;
+        };
+        backdrop-color = config.lib.stylix.colors.base00;
+      };
     };
   };
 }

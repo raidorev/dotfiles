@@ -41,7 +41,7 @@ in
       programs.niri.enable = true;
     };
 
-    homeManager = { pkgs, config, ... }: {
+    homeManager = { pkgs, ... }: {
       programs.niri.settings = {
         spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
         input = {
@@ -53,13 +53,6 @@ in
             };
           };
           focus-follows-mouse.enable = true;
-        };
-        outputs."DP-1" = {
-          mode = {
-            width = 2560;
-            height = 1440;
-          };
-          backdrop-color = config.lib.stylix.colors.base00;
         };
         prefer-no-csd = true;
         layout = {

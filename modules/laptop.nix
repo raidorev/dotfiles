@@ -1,23 +1,10 @@
 { __findFile, ... }:
 {
   den.aspects.laptop = { host, ... }: {
-    includes = [
-      <boot>
-      <locale>
-      <nix-settings>
-      <audio>
-      <nvidia>
-    ];
+    includes = [ <hosts/base> ];
 
-    nixos = { pkgs, ... }: {
+    nixos = {
       imports = [ ../hosts/laptop/hardware-configuration.nix ];
-
-      networking.networkmanager.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        vim
-        wget
-      ];
     };
   };
 }
