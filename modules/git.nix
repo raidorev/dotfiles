@@ -1,9 +1,9 @@
 {
   den.aspects.git = { host, user, ... }: {
-    nixos = { ... }: {
+    nixos = {
       programs.git.enable = true;
     };
-    homeManager = { ... }: {
+    homeManager = {
       programs.git = {
         enable = true;
         settings = {
