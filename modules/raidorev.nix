@@ -11,7 +11,7 @@
       den.aspects.wofi
       den.aspects.firefox
       den.aspects.zed
-      # den.aspects.stylix
+      den.aspects.stylix
       den.aspects.niri
       den.aspects.noctalia
       den.aspects.helium
