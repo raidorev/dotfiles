@@ -16,10 +16,10 @@
       <noctalia>
       <helium>
       <fastfetch>
+      <vesktop>
 
       # Shame on you, unfree software that I still use for some reason
       (den.provides.unfree [
-        "discord"
         "spotify"
         "claude-code"
       ])
@@ -68,7 +68,6 @@
           qt6.qtdeclarative
           kooha
 
-          discord
           spotify
           claude-code
         ];
