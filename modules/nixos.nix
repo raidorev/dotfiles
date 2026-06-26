@@ -1,12 +1,12 @@
-{ den, ... }:
+{ __findFile, ... }:
 {
   den.aspects.nixos = { host, ... }: {
     includes = [
-      den.aspects.boot
-      den.aspects.locale
-      den.aspects.nix-settings
-      den.aspects.audio
-      den.aspects.nvidia
+      <boot>
+      <locale>
+      <nix-settings>
+      <audio>
+      <nvidia>
     ];
 
     nixos = { pkgs, ... }: {

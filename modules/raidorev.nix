@@ -1,20 +1,20 @@
-{ den, ... }:
+{ den, __findFile, ... }:
 {
   den.aspects.raidorev = { user, host, ... }: {
     includes = [
-      den.batteries.define-user
-      den.batteries.primary-user
-      (den.batteries.user-shell "fish")
+      <den/define-user>
+      <den/primary-user>
+      (<den/user-shell> "fish")
 
-      den.aspects.git
-      den.aspects.ghostty
-      den.aspects.wofi
-      den.aspects.firefox
-      den.aspects.zed
-      den.aspects.stylix
-      den.aspects.niri
-      den.aspects.noctalia
-      den.aspects.helium
+      <git>
+      <ghostty>
+      <wofi>
+      <firefox>
+      <zed>
+      <stylix>
+      <niri>
+      <noctalia>
+      <helium>
 
       # Shame on you, unfree software that I still use for some reason
       (den.provides.unfree [
