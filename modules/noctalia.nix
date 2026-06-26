@@ -22,7 +22,7 @@
     homeManager = {
       imports = [ inputs.noctalia.homeModules.default ];
 
-      home.file.".face".source = ../punk-cat;
+      home.file.".face".source = ../profile.png;
 
       programs.noctalia-shell = {
         enable = true;
