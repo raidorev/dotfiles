@@ -17,6 +17,7 @@
       <helium>
       <fastfetch>
       <vesktop>
+      <jetbrains>
 
       <minecraft>
 
