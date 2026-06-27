@@ -93,18 +93,8 @@
 
     {
       "type": "disk",
-      "key": "{$9}├   NixOS     ",
+      "key": "{$9}└   NixOS     ",
       "folders": ["/"],
-      "percent": {
-        "type": 3, // 3 = show number + bar + percentage
-        "green": 30, // <30% is green
-        "yellow": 70, // 30-70% is yellow, >70% is red
-      },
-    },
-    {
-      "type": "disk",
-      "key": "{$10}└   Home      ",
-      "folders": ["/home"],
       "percent": {
         "type": 3, // 3 = show number + bar + percentage
         "green": 30, // <30% is green
