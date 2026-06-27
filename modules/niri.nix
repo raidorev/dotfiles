@@ -1,13 +1,12 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 let
   noctalia =
-    pkgs: cmd:
+    cmd:
     [
-      "noctalia-shell"
-      "ipc"
-      "call"
+      "noctalia"
+      "msg"
     ]
-    ++ (pkgs.lib.splitString " " cmd);
+    ++ (lib.splitString " " cmd);
 in
 {
   flake-file.inputs.niri = {
@@ -45,7 +44,8 @@ in
       programs.niri.settings = {
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-        spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
+        spawn-at-startup = [ { command = [ "noctalia" ]; } ];
+        debug.honor-xdg-activation-with-invalid-serial = [ ];
         input = {
           keyboard = {
             numlock = true;
@@ -67,6 +67,16 @@ in
             left = 0;
           };
         };
+        layer-rules = [
+          {
+            matches = [
+              {
+                namespace = "^noctalia-backdrop";
+              }
+            ];
+            place-within-backdrop = true;
+          }
+        ];
         window-rules = [
           {
             geometry-corner-radius = {
@@ -86,45 +96,45 @@ in
             "ghostty"
             "+new-window"
           ];
-          "Mod+D".action.spawn = noctalia pkgs "launcher toggle";
-          "Super+Alt+L".action.spawn = noctalia pkgs "lockScreen lock";
-          "Mod+P".action.spawn = noctalia pkgs "sessionMenu toggle";
+          "Mod+D".action.spawn = noctalia "panel-toggle launcher";
+          "Super+Alt+L".action.spawn = noctalia "session lock";
+          "Mod+P".action.spawn = noctalia "panel-toggle session";
 
           "XF86AudioRaiseVolume" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "volume increase";
+            action.spawn = noctalia "volume-up";
           };
           "XF86AudioLowerVolume" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "volume decrease";
+            action.spawn = noctalia "volume-down";
           };
           "XF86AudioMute" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "volume muteOutput";
+            action.spawn = noctalia "volume-mute";
           };
           "XF86AudioMicMute" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "volume muteInput";
+            action.spawn = noctalia "mic-mute";
           };
           "XF86AudioPlay" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "media playPause";
+            action.spawn = noctalia "media toggle";
           };
           "XF86AudioNext" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "media next";
+            action.spawn = noctalia "media next";
           };
           "XF86AudioPrev" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "media previous";
+            action.spawn = noctalia "media previous";
           };
           "XF86MonBrightnessUp" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "brightness increase";
+            action.spawn = noctalia "brightness-up";
           };
           "XF86MonBrightnessDown" = {
             allow-when-locked = true;
-            action.spawn = noctalia pkgs "brightness decrease";
+            action.spawn = noctalia "brightness-down";
           };
 
           "Mod+Q".action.close-window = { };
