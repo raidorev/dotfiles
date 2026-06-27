@@ -1,6 +1,7 @@
-{ pkgs, ... }:
 {
-  users.users.raidorev.packages = [
-    pkgs.wofi
-  ];
+  den.aspects.wofi = { user, ... }: {
+    homeManager = { pkgs, ... }: {
+      home.packages = [ pkgs.wofi ];
+    };
+  };
 }

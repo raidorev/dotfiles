@@ -1,4 +1,7 @@
-{ pkgs, ... }:
 {
-  users.users.raidorev.packages = [ pkgs.vesktop ];
+  den.aspects.vesktop = { user, ... }: {
+    homeManager = { pkgs, ... }: {
+      home.packages = [ pkgs.vesktop ];
+    };
+  };
 }

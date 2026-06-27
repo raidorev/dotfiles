@@ -1,13 +1,17 @@
-{ ... }:
 {
-  programs.firefox.enable = true;
-
-  home-manager.users.raidorev.programs.firefox = {
-    enable = true;
-    profiles.default = {
-      id = 0;
-      isDefault = true;
-      name = "Default";
+  den.aspects.firefox = { host, user, ... }: {
+    nixos = {
+      programs.firefox.enable = true;
+    };
+    homeManager = {
+      programs.firefox = {
+        enable = true;
+        profiles.default = {
+          id = 0;
+          isDefault = true;
+          name = "Default";
+        };
+      };
     };
   };
 }

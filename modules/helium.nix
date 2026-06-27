@@ -1,6 +1,15 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
-  home-manager.users.raidorev.home.packages = [
-    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
+  flake-file.inputs.helium = {
+    url = "github:schembriaiden/helium-browser-nix-flake";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  den.aspects.helium = { user, ... }: {
+    homeManager = { pkgs, ... }: {
+      home.packages = [
+        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
+    };
+  };
 }

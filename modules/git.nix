@@ -1,14 +1,19 @@
-  {...}:
-  {
-  programs.git.enable = true;
-  home-manager.users.raidorev.programs.git =  {
-    enable = true;
-    settings = {
-      user = {
-        name  = "Alexander Titov";
-        email = "fox@raidorev.tech";
+{
+  den.aspects.git = { host, user, ... }: {
+    nixos = {
+      programs.git.enable = true;
+    };
+    homeManager = {
+      programs.git = {
+        enable = true;
+        settings = {
+          user = {
+            name = "Alexander Titov";
+            email = "fox@raidorev.tech";
+          };
+          init.defaultBranch = "main";
+        };
       };
-      init.defaultBranch = "main";
     };
   };
-  }
+}

@@ -1,23 +1,32 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
-  # install package
-  environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # ... maybe other stuff
-  ];
+  flake-file.inputs.noctalia = {
+    url = "github:noctalia-dev/noctalia/legacy-v4";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  home-manager.users.raidorev = {
-    home.file.".face".source = ../punk-cat;
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
+  den.aspects.noctalia = { host, user, ... }: {
+    nixos = { pkgs, ... }: {
+      environment.systemPackages = [
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
 
-    programs.noctalia-shell = {
-      enable = true;
-      settings = {
-        location = {
-          name = "St Petersburg";
-        };
+      nix.settings = {
+        extra-substituters = [ "https://noctalia.cachix.org" ];
+        extra-trusted-public-keys = [
+          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        ];
+      };
+    };
+
+    homeManager = {
+      imports = [ inputs.noctalia.homeModules.default ];
+
+      home.file.".face".source = ../profile.png;
+
+      programs.noctalia-shell = {
+        enable = true;
+        settings.location.name = "St Petersburg";
       };
     };
   };
