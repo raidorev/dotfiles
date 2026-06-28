@@ -25,6 +25,7 @@
       (den.provides.unfree [
         "spotify"
         "claude-code"
+        "obsidian"
       ])
     ];
 
@@ -73,6 +74,7 @@
 
           spotify
           claude-code
+          obsidian
         ];
       };
     };
