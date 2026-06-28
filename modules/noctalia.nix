@@ -54,13 +54,13 @@
 
           idle.behavior = {
             lock = {
-              timeout = 5;
+              timeout = 300;
               action = "lock";
               enabled = true;
             };
 
             screen-off = {
-              timeout = 10;
+              timeout = 350;
               action = "screen_off";
               enabled = true;
             };
