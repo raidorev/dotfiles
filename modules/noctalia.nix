@@ -38,8 +38,8 @@
           };
           wallpaper = {
             enabled = true;
-            directory = "${config.home.profileDirectory}/wallpapers";
-            default = "${config.home.profileDirectory}/wallpapers/cabin-2.jpg";
+            directory = "${config.home.homeDirectory}/wallpapers";
+            default = "${config.home.homeDirectory}/wallpapers/cabin-2.jpg";
           };
           backdrop = {
             enabled = true;
