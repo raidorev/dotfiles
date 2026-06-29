@@ -82,7 +82,6 @@
           nil
           kooha
 
-          spotify
           claude-code
           obsidian
         ];
