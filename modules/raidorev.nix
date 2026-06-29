@@ -19,6 +19,7 @@
       <vesktop>
       <jetbrains>
 
+      <steam>
       <minecraft>
 
       # Shame on you, unfree software that I still use for some reason
