@@ -23,7 +23,7 @@
       <minecraft>
 
       # Shame on you, unfree software that I still use for some reason
-      (den.provides.unfree [
+      (<den/unfree> [
         "spotify"
         "claude-code"
         "obsidian"

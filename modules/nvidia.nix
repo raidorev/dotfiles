@@ -1,8 +1,8 @@
-{ den, ... }:
+{ __findFile, ... }:
 {
   den.aspects.nvidia = { host, ... }: {
     includes = [
-      (den.provides.unfree [
+      (<den/unfree> [
         "nvidia-x11"
         "nvidia-settings"
       ])

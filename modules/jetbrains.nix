@@ -1,8 +1,8 @@
-{ den, ... }:
+{ __findFile, ... }:
 {
   den.aspects.jetbrains = {
     includes = [
-      (den.provides.unfree [
+      (<den/unfree> [
         "webstorm"
         "rider"
       ])
