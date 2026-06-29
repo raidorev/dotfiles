@@ -31,12 +31,6 @@ in
         };
       };
 
-      xdg.portal = {
-        enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-        config.niri.default = [ "gtk" ];
-      };
-
       programs.niri.enable = true;
     };
 
