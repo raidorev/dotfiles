@@ -60,8 +60,6 @@
         sessionVariables = {
           NIXOS_OZONE_WL = "1";
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
-          QML_IMPORT_PATH = "${pkgs.qt6.qtdeclarative}/lib/qt6/qml";
-          QML2_IMPORT_PATH = "${pkgs.qt6.qtdeclarative}/lib/qt6/qml";
         };
         packages = with pkgs; [
           eza
@@ -76,7 +74,6 @@
           nixfmt
           nixd
           nil
-          qt6.qtdeclarative
           kooha
 
           spotify
