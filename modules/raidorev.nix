@@ -29,11 +29,15 @@
         "obsidian"
       ])
     ];
+    nixos = {
+      users.users.raidorev.extraGroups = [
+        "networkmanager"
+        "input"
+      ];
 
-    nixos.users.users.raidorev.extraGroups = [
-      "networkmanager"
-      "input"
-    ];
+      networking.firewall.allowedTCPPorts = [ 57621 ];
+      networking.firewall.allowedUDPPorts = [ 5353 ];
+    };
 
     homeManager = { pkgs, ... }: {
       targets.genericLinux.nixGL.vulkan.enable = true;
@@ -55,6 +59,8 @@
           "x-scheme-handler/unknown" = "helium.desktop";
         };
       };
+
+      services.spotifyd.enable = true;
 
       home = {
         sessionVariables = {
