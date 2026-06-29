@@ -13,6 +13,8 @@
       <pipewire>
       <power>
       <nvidia>
+
+      (<den/insecure> [ "pnpm-10.29.2" ])
     ];
 
     nixos = { pkgs, ... }: {
