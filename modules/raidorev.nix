@@ -25,7 +25,6 @@
 
       # Shame on you, unfree software that I still use for some reason
       (<den/unfree> [
-        "spotify"
         "claude-code"
         "obsidian"
       ])
