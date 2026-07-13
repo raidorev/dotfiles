@@ -1,12 +1,22 @@
 { inputs, ... }:
 {
-  flake-file.inputs.noctalia = {
-    url = "github:noctalia-dev/noctalia";
-    inputs.nixpkgs.follows = "nixpkgs";
+  flake-file.inputs = {
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   den.aspects.noctalia = { host, user, ... }: {
     nixos = { pkgs, ... }: {
+      imports = [
+        inputs.noctalia-greeter.nixosModules.default
+      ];
       environment.systemPackages = [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         pkgs.ddcutil
@@ -17,6 +27,19 @@
         extra-trusted-public-keys = [
           "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
         ];
+      };
+
+      programs.noctalia-greeter = {
+        enable = true;
+
+        settings = {
+          appearance.scheme = "Catppuccin";
+          cursor = {
+            theme = "catppuccin-mocha-rosewater-cursors";
+            path = "${pkgs.catppuccin-cursors.mochaRosewater}/share/icons";
+            size = 24;
+          };
+        };
       };
     };
 
