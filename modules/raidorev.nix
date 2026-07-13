@@ -7,6 +7,7 @@
       (<den/user-shell> "fish")
 
       <git>
+      <ssh>
       <ghostty>
       <wofi>
       <firefox>
@@ -34,9 +35,14 @@
         "networkmanager"
         "input"
       ];
+      networking.firewall.enable = false;
+      # networking.firewall.allowedTCPPorts = [ 57621 ];
+      # networking.firewall.allowedUDPPorts = [ 5353 ];
 
-      networking.firewall.allowedTCPPorts = [ 57621 ];
-      networking.firewall.allowedUDPPorts = [ 5353 ];
+      services.calibre-server.enable = true;
+      services.calibre-server.libraries = [
+        "/home/raidorev/Calibre Library"
+      ];
     };
 
     homeManager = { pkgs, ... }: {
@@ -84,6 +90,8 @@
 
           claude-code
           obsidian
+          kitty
+          calibre
         ];
       };
     };

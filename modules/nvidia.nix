@@ -9,6 +9,11 @@
     ];
 
     nixos = {
+      boot.initrd.kernelModules = [
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_drm"
+      ];
       hardware.graphics.enable = true;
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {

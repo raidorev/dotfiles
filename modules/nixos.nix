@@ -1,10 +1,22 @@
 { __findFile, ... }:
 {
   den.aspects.nixos = { host, ... }: {
-    includes = [ <hosts/base> ];
+    includes = [
+      <hosts/base>
+      <podman>
+    ];
 
-    nixos = { config, ... }: {
+    nixos = { pkgs, config, ... }: {
       imports = [ ../hosts/pc/hardware-configuration.nix ];
+
+      programs.nix-ld.enable = true;
+
+      environment.systemPackages = with pkgs; [
+        qemu
+        quickemu
+      ];
+
+      services.zerotierone.enable = true;
 
       systemd.services.nvidia-power-limit = {
         description = "Set NVIDIA GPU power limit";

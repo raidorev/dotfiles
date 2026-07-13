@@ -4,9 +4,17 @@
       boot = {
         loader = {
           limine.enable = true;
+          limine.resolution = "2560x1440";
           efi.canTouchEfiVariables = true;
         };
+        kernelParams = [
+          "nvidia_drm.modeset=1"
+          "nvidia_drm.fbdev=1"
+          "initcall_blacklist=simpledrm_platform_driver_init"
+        ];
         kernelPackages = pkgs.linuxPackages_latest;
+
+        plymouth.enable = true;
       };
     };
   };
