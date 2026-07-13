@@ -60,6 +60,8 @@
           "inode/directory" = [ "nemo.desktop" ];
           "application/x-gnome-saved-search" = [ "nemo.desktop" ];
 
+          "application/pdf" = "org.pwmt.zathura.desktop";
+
           "text/html" = "helium.desktop";
           "x-scheme-handler/http" = "helium.desktop";
           "x-scheme-handler/https" = "helium.desktop";
@@ -115,6 +117,7 @@
           calibre
 
           rclone
+          zathura
         ];
       };
     };
