@@ -16,8 +16,6 @@
         quickemu
       ];
 
-      services.zerotierone.enable = true;
-
       systemd.services.nvidia-power-limit = {
         description = "Set NVIDIA GPU power limit";
         wantedBy = [ "multi-user.target" ];
