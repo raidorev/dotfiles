@@ -42,6 +42,9 @@
       services.calibre-server.libraries = [
         "/home/raidorev/Calibre Library"
       ];
+
+      programs.fuse.enable = true;
+      programs.fuse.userAllowOther = true;
     };
 
     homeManager = { pkgs, ... }: {
@@ -67,6 +70,25 @@
 
       services.spotifyd.enable = true;
 
+      systemd.user.services.rclone-onedrive = {
+        Unit = {
+          Description = "rclone mount for OneDrive";
+          After = [ "network-online.target" ];
+          Wants = [ "network-online.target" ];
+        };
+        Service = {
+          Type = "notify";
+          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/OneDrive";
+          ExecStart = "${pkgs.rclone}/bin/rclone mount OneDrive: %h/OneDrive --vfs-cache-mode writes --allow-other";
+          ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/OneDrive";
+          Restart = "on-failure";
+          RestartSec = 10;
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+
       home = {
         sessionVariables = {
           NIXOS_OZONE_WL = "1";
@@ -91,6 +113,8 @@
           obsidian
           kitty
           calibre
+
+          rclone
         ];
       };
     };
