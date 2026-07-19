@@ -36,7 +36,10 @@
           appearance.scheme = "Catppuccin";
           cursor = {
             theme = "catppuccin-mocha-rosewater-cursors";
-            path = "${pkgs.catppuccin-cursors.mochaRosewater}/share/icons";
+            # See: https://github.com/nix-community/stylix/issues/2223
+            path = "${
+              inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
+            }/share/icons";
             size = 24;
           };
         };

@@ -23,7 +23,9 @@
         image = ../wallpapers/cabin-2.jpg;
 
         cursor = {
-          package = pkgs.catppuccin-cursors.mochaRosewater;
+          # See: https://github.com/nix-community/stylix/issues/2223
+          package =
+            inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater;
           name = "catppuccin-mocha-rosewater-cursors";
           size = 24;
         };
