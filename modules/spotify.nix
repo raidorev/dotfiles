@@ -1,6 +1,6 @@
 { __findFile, ... }:
 {
-  den.aspects.raidorev = {
+  den.aspects.spotify = {
     includes = [
       # Shame on you, unfree software that I still use for some reason
       (<den/unfree> [ "spotify" ])
