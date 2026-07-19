@@ -23,6 +23,8 @@
       <steam>
       <minecraft>
 
+      <spotify>
+
       # Shame on you, unfree software that I still use for some reason
       (<den/unfree> [
         "claude-code"
@@ -34,9 +36,6 @@
         "networkmanager"
         "input"
       ];
-      networking.firewall.enable = false;
-      # networking.firewall.allowedTCPPorts = [ 57621 ];
-      # networking.firewall.allowedUDPPorts = [ 5353 ];
 
       services.calibre-server.enable = true;
       services.calibre-server.libraries = [
@@ -69,8 +68,6 @@
           "x-scheme-handler/unknown" = "helium.desktop";
         };
       };
-
-      services.spotifyd.enable = true;
 
       systemd.user.services.rclone-onedrive = {
         Unit = {
