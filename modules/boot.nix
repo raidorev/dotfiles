@@ -3,8 +3,11 @@
     nixos = { pkgs, ... }: {
       boot = {
         loader = {
-          limine.enable = true;
-          limine.resolution = "2560x1440";
+          limine = {
+            enable = true;
+            resolution = "2560x1440";
+            maxGenerations = 5;
+          };
           efi.canTouchEfiVariables = true;
         };
         kernelParams = [
