@@ -43,7 +43,7 @@
       };
     };
 
-    homeManager = { config, ... }: {
+    homeManager = {
       imports = [ inputs.noctalia.homeModules.default ];
 
       home.file.".face".source = ../profile.png;
@@ -58,11 +58,6 @@
               enable_builtin_templates = false;
               enable_community_templates = false;
             };
-          };
-          wallpaper = {
-            enabled = true;
-            directory = "${config.home.homeDirectory}/wallpapers";
-            default = "${config.home.homeDirectory}/wallpapers/cabin-2.jpg";
           };
           backdrop = {
             enabled = true;
@@ -117,10 +112,23 @@
               empty_color = "surface";
               occupied_color = "surface";
             };
+            cat.type = "noctalia/bongocat:cat";
           };
 
           bar = {
             default = {
+              margin_ends = 0;
+              concave_edge_corners = true;
+              radius = 12;
+
+              start = [
+                "launcher"
+                "weather"
+                "sysmon"
+                "workspaces"
+                "media"
+                "cat"
+              ];
               center = [ "active_window" ];
               end = [
                 "tray"
@@ -132,14 +140,6 @@
                 "brightness"
                 "control-center"
                 "session"
-              ];
-              margin_ends = 10;
-              start = [
-                "launcher"
-                "weather"
-                "sysmon"
-                "workspaces"
-                "media"
               ];
             };
           };
