@@ -1,6 +1,6 @@
 {
   den.aspects.tailscale = { host, ... }: {
-    nixos = { config, ... }: {
+    nixos = { config, pkgs, ... }: {
       services.tailscale.enable = true;
       networking.nftables.enable = true;
       networking.firewall = {
@@ -13,6 +13,7 @@
       ];
       systemd.network.wait-online.enable = false;
       boot.initrd.systemd.network.wait-online.enable = false;
+      environment.systemPackages = with pkgs; [ trayscale ];
     };
   };
 }
