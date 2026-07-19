@@ -4,6 +4,7 @@
     includes = [
       <hosts/base>
       <podman>
+      <tailscale>
     ];
 
     nixos = { pkgs, config, ... }: {
