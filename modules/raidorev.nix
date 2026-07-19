@@ -1,4 +1,4 @@
-{ den, __findFile, ... }:
+{ __findFile, ... }:
 {
   den.aspects.raidorev = { host, ... }: {
     includes = [
@@ -29,6 +29,7 @@
       (<den/unfree> [
         "claude-code"
         "obsidian"
+        "slack"
       ])
     ];
     nixos = {
@@ -115,6 +116,8 @@
 
           rclone
           zathura
+          slack
+          pods
         ];
       };
     };
