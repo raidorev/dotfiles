@@ -1,0 +1,3 @@
+2026-07-20 Update inputs rec:+1w
+2026-07-20 Update README.md
+2026-07-20 Capture noctalia settings changes

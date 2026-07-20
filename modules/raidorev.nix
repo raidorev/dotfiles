@@ -118,6 +118,8 @@
           zathura
           slack
           pods
+
+          tuxedo
         ];
       };
     };
