@@ -18,6 +18,7 @@
       <helium>
       <fastfetch>
       <vesktop>
+      <kenku-fm>
       <jetbrains>
 
       <steam>
