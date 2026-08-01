@@ -23,8 +23,23 @@ in
         extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
       };
 
-
       programs.niri.enable = true;
+      xdg.portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      };
+      xdg.portal.config.niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+
+      programs.gpu-screen-recorder.enable = true;
     };
 
     homeManager = { lib, pkgs, ... }: {
