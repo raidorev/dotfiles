@@ -6,10 +6,24 @@
   };
 
   den.aspects.helium = { user, ... }: {
-    homeManager = { pkgs, ... }: {
-      home.packages = [
-        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
-    };
+    homeManager =
+      { pkgs, config, ... }:
+      let
+        helium = inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      in
+      {
+        home.packages = [ helium ];
+
+        xdg.desktopEntries.helium-dnd = {
+          name = "Helium (FoundryVTT)";
+          exec = "${helium}/bin/helium --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --user-data-dir=${config.xdg.configHome}/helium-dnd %U";
+          icon = "helium";
+          terminal = false;
+          categories = [
+            "Network"
+            "WebBrowser"
+          ];
+        };
+      };
   };
 }
