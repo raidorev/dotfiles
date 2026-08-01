@@ -31,7 +31,6 @@
       (<den/unfree> [
         "claude-code"
         "obsidian"
-        "slack"
       ])
     ];
     nixos = {
@@ -140,7 +139,6 @@
 
           rclone
           zathura
-          slack
           pods
 
           tuxedo
