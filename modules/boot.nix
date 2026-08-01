@@ -6,7 +6,7 @@
           limine = {
             enable = true;
             resolution = "2560x1440";
-            maxGenerations = 5;
+            maxGenerations = 8;
           };
           efi.canTouchEfiVariables = true;
         };
