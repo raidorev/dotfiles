@@ -9,7 +9,6 @@
       <git>
       <ssh>
       <ghostty>
-      <wofi>
       <firefox>
       <zed>
       <stylix>
