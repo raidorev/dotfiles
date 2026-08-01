@@ -22,6 +22,8 @@
         pkgs.ddcutil
       ];
 
+      services.ddccontrol.enable = true;
+
       nix.settings = {
         extra-substituters = [ "https://noctalia.cachix.org" ];
         extra-trusted-public-keys = [
@@ -55,6 +57,7 @@
       programs.noctalia = {
         enable = true;
         settings = {
+          wallpaper.enable = true;
           theme = {
             builtin = "Catppuccin";
             templates = {
