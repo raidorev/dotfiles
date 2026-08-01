@@ -40,6 +40,9 @@
         "input"
       ];
 
+      services.udisks2.enable = true;
+      services.qbittorrent.enable = true;
+
       services.calibre-server.enable = true;
       services.calibre-server.libraries = [
         "/home/raidorev/Calibre Library"
@@ -51,6 +54,25 @@
 
     homeManager = { pkgs, ... }: {
       targets.genericLinux.nixGL.vulkan.enable = true;
+
+      programs = {
+        direnv = {
+          enable = true;
+          enableFishIntegration = true;
+          nix-direnv.enable = true;
+        };
+
+        fish.enable = true;
+      };
+
+      services.udiskie = {
+        enable = true;
+        settings = {
+          program_options = {
+            file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
+          };
+        };
+      };
 
       xdg.desktopEntries.nemo = {
         name = "Nemo";
@@ -120,6 +142,18 @@
           zathura
           slack
           pods
+
+          tuxedo
+
+          vlc
+
+          lazyjournal
+
+          unetbootin
+
+          super-productivity
+
+          parabolic
         ];
       };
     };
