@@ -10,6 +10,8 @@
     nixos = { pkgs, config, ... }: {
       imports = [ ../hosts/pc/hardware-configuration.nix ];
 
+      zramSwap.enable = true;
+
       programs.nix-ld.enable = true;
 
       environment.systemPackages = with pkgs; [

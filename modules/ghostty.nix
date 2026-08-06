@@ -6,6 +6,9 @@
         enable = true;
         enableFishIntegration = true;
         systemd.enable = true;
+        settings = {
+          shell-integration-features = "ssh-env,ssh-terminfo";
+        };
       };
     };
   };
