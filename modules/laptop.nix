@@ -1,6 +1,6 @@
 { __findFile, ... }:
 {
-  den.aspects.laptop = { host, ... }: {
+  den.aspects.laptop = {
     includes = [ <hosts/base> ];
 
     nixos = {

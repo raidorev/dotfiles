@@ -1,5 +1,5 @@
 {
-  den.aspects.vesktop = { user, ... }: {
+  den.aspects.vesktop = {
     homeManager = { pkgs, ... }: {
       home.packages = [ pkgs.vesktop ];
     };

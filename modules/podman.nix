@@ -1,4 +1,3 @@
-{ __findFile, ... }:
 {
   den.aspects.podman = {
     nixos = { pkgs, ... }: {

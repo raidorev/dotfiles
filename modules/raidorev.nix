@@ -1,6 +1,6 @@
 { __findFile, ... }:
 {
-  den.aspects.raidorev = { host, ... }: {
+  den.aspects.raidorev = {
     includes = [
       <den/define-user>
       <den/primary-user>
@@ -19,6 +19,15 @@
       <vesktop>
       <kenku-fm>
       <jetbrains>
+      <libvirt>
+      <samba>
+
+      <direnv>
+      <nix-tools>
+      <nemo>
+      <rclone>
+      <zathura>
+      <qbittorrent>
 
       <steam>
       <minecraft>
@@ -33,84 +42,14 @@
         "obsidian"
       ])
     ];
-    nixos = {
-      users.users.raidorev.extraGroups = [
-        "networkmanager"
-        "input"
-      ];
 
-      services.udisks2.enable = true;
-      services.qbittorrent.enable = true;
-
-      services.calibre-server.enable = true;
-      services.calibre-server.libraries = [
-        "/home/raidorev/Calibre Library"
-      ];
-
-      programs.fuse.enable = true;
-      programs.fuse.userAllowOther = true;
-    };
+    user.extraGroups = [ "input" ];
 
     homeManager = { pkgs, ... }: {
       targets.genericLinux.nixGL.vulkan.enable = true;
 
-      programs = {
-        direnv = {
-          enable = true;
-          enableFishIntegration = true;
-          nix-direnv.enable = true;
-        };
-
-        fish.enable = true;
-      };
-
-      services.udiskie = {
-        enable = true;
-        settings = {
-          program_options = {
-            file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
-          };
-        };
-      };
-
-      xdg.desktopEntries.nemo = {
-        name = "Nemo";
-        exec = "${pkgs.nemo-with-extensions}/bin/nemo";
-      };
-      xdg.mimeApps = {
-        enable = true;
-        defaultApplications = {
-          "inode/directory" = [ "nemo.desktop" ];
-          "application/x-gnome-saved-search" = [ "nemo.desktop" ];
-
-          "application/pdf" = "org.pwmt.zathura.desktop";
-
-          "text/html" = "helium.desktop";
-          "x-scheme-handler/http" = "helium.desktop";
-          "x-scheme-handler/https" = "helium.desktop";
-          "x-scheme-handler/about" = "helium.desktop";
-          "x-scheme-handler/unknown" = "helium.desktop";
-        };
-      };
-
-      systemd.user.services.rclone-onedrive = {
-        Unit = {
-          Description = "rclone mount for OneDrive";
-          After = [ "network-online.target" ];
-          Wants = [ "network-online.target" ];
-        };
-        Service = {
-          Type = "notify";
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %h/OneDrive";
-          ExecStart = "${pkgs.rclone}/bin/rclone mount OneDrive: %h/OneDrive --vfs-cache-mode writes --allow-other";
-          ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/OneDrive";
-          Restart = "on-failure";
-          RestartSec = 10;
-        };
-        Install = {
-          WantedBy = [ "default.target" ];
-        };
-      };
+      # The handlers themselves live with the app that provides them.
+      xdg.mimeApps.enable = true;
 
       home = {
         sessionVariables = {
@@ -125,11 +64,7 @@
           jq
           htop
           telegram-desktop
-          nemo-with-extensions
 
-          nixfmt
-          nixd
-          nil
           kooha
 
           claude-code
@@ -137,8 +72,6 @@
           kitty
           calibre
 
-          rclone
-          zathura
           pods
 
           tuxedo

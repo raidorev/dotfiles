@@ -1,34 +1,18 @@
 { __findFile, ... }:
 {
-  den.aspects.nixos = { host, ... }: {
+  den.aspects.nixos = {
     includes = [
       <hosts/base>
       <podman>
       <tailscale>
     ];
 
-    nixos = { pkgs, config, ... }: {
+    nixos = {
       imports = [ ../hosts/pc/hardware-configuration.nix ];
 
       zramSwap.enable = true;
 
       programs.nix-ld.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        qemu
-        quickemu
-      ];
-
-      systemd.services.nvidia-power-limit = {
-        description = "Set NVIDIA GPU power limit";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "nvidia-persistenced.service" ];
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${config.hardware.nvidia.package.bin}/bin/nvidia-smi -pl 230";
-          RemainAfterExit = true;
-        };
-      };
     };
 
     homeManager = { config, ... }: {

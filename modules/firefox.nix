@@ -1,5 +1,5 @@
 {
-  den.aspects.firefox = { host, user, ... }: {
+  den.aspects.firefox = {
     nixos = {
       programs.firefox.enable = true;
     };

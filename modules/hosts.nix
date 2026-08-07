@@ -1,9 +1,12 @@
 { __findFile, ... }:
 {
-  den.hosts.x86_64-linux.nixos.users.raidorev = { };
+  den.hosts.x86_64-linux.nixos = {
+    users.raidorev = { };
+    gpuPowerLimit = 230;
+  };
   den.hosts.x86_64-linux.laptop.users.raidorev = { };
 
-  den.aspects.hosts.base = { host, ... }: {
+  den.aspects.hosts.base = {
     includes = [
       <den/host-aspects>
       <boot>

@@ -1,6 +1,6 @@
 { __findFile, ... }:
 {
-  den.aspects.plumsail = { host, ... }: {
+  den.aspects.plumsail = {
     includes = [
       (<den/unfree> [ "slack" ])
       <secureframe>

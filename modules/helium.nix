@@ -14,6 +14,14 @@
       {
         home.packages = [ helium ];
 
+        xdg.mimeApps.defaultApplications = {
+          "text/html" = "helium.desktop";
+          "x-scheme-handler/http" = "helium.desktop";
+          "x-scheme-handler/https" = "helium.desktop";
+          "x-scheme-handler/about" = "helium.desktop";
+          "x-scheme-handler/unknown" = "helium.desktop";
+        };
+
         xdg.desktopEntries.helium-dnd = {
           name = "Helium (FoundryVTT)";
           exec = "${helium}/bin/helium --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --user-data-dir=${config.xdg.configHome}/helium-dnd %U";

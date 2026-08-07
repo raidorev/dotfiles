@@ -1,5 +1,5 @@
 {
-  den.aspects.bluetooth = { host, ... }: {
+  den.aspects.bluetooth = {
     nixos = {
       hardware.bluetooth = {
         enable = true;

@@ -3,6 +3,8 @@
   imports = [
     (inputs.flake-file.flakeModules.dendritic or { })
     (inputs.den.flakeModules.dendritic or { })
+    # TODO: Enable it
+    # inputs.den.flakeModules.strict
   ];
 
   _module.args.__findFile = den.lib.__findFile;
