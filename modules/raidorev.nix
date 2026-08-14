@@ -30,7 +30,6 @@
       <qbittorrent>
 
       <steam>
-      <minecraft>
 
       <spotify>
 
@@ -64,6 +63,7 @@
           jq
           htop
           telegram-desktop
+          prismlauncher
 
           kooha
 
