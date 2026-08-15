@@ -28,6 +28,7 @@
       <rclone>
       <zathura>
       <qbittorrent>
+      <superfile>
 
       <steam>
 
