@@ -40,6 +40,7 @@
       (<den/unfree> [
         "claude-code"
         "obsidian"
+        "osu-lazer-bin"
       ])
     ];
 
@@ -86,6 +87,7 @@
           super-productivity
 
           parabolic
+          osu-lazer-bin
         ];
       };
     };
