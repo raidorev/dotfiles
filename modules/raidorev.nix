@@ -24,7 +24,7 @@
 
       <direnv>
       <nix-tools>
-      <nemo>
+      <thunar>
       <rclone>
       <zathura>
       <qbittorrent>
