@@ -74,8 +74,6 @@
           kitty
           calibre
 
-          pods
-
           tuxedo
 
           vlc
