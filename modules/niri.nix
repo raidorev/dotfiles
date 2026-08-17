@@ -10,7 +10,7 @@ let
 in
 {
   flake-file.inputs.niri = {
-    url = "github:sodiboo/niri-flake";
+    url = "github:epireyn/niri-flake";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -19,8 +19,14 @@ in
       imports = [ inputs.niri.nixosModules.niri ];
 
       nix.settings = {
-        extra-substituters = [ "https://niri.cachix.org" ];
-        extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+        extra-substituters = [
+          "https://niri.cachix.org"
+          "https://niri-epireyn.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+          "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
+        ];
       };
 
       programs.niri.enable = true;
