@@ -86,6 +86,8 @@
 
           parabolic
           osu-lazer-bin
+
+          qimgv
         ];
       };
     };
