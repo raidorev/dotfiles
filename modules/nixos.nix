@@ -5,6 +5,7 @@
       <hosts/base>
       <podman>
       <tailscale>
+      <wifi>
     ];
 
     nixos = {
