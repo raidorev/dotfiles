@@ -24,7 +24,7 @@
 
         xdg.desktopEntries.helium-dnd = {
           name = "Helium (FoundryVTT)";
-          exec = "${helium}/bin/helium --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --user-data-dir=${config.xdg.configHome}/helium-dnd %U";
+          exec = "${helium}/bin/helium --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-renderer-backgrounding --enable-features=SharedArrayBuffer --user-data-dir=${config.xdg.configHome}/helium-dnd %U";
           icon = "helium";
           terminal = false;
           categories = [
