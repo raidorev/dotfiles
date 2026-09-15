@@ -1,5 +1,11 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
+  den.schema.host.options.ddcMonitor = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Whether this host drives a monitor over DDC/CI.";
+  };
+
   flake-file.inputs = {
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -13,40 +19,43 @@
   };
 
   den.aspects.noctalia = { host, user, ... }: {
-    nixos = { pkgs, ... }: {
-      imports = [
-        inputs.noctalia-greeter.nixosModules.default
-      ];
-      environment.systemPackages = [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        pkgs.ddcutil
-      ];
-
-      services.ddccontrol.enable = true;
-
-      nix.settings = {
-        extra-substituters = [ "https://noctalia.cachix.org" ];
-        extra-trusted-public-keys = [
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    nixos =
+      { pkgs, lib, ... }:
+      {
+        imports = [
+          inputs.noctalia-greeter.nixosModules.default
         ];
-      };
+        environment.systemPackages = [
+          inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ]
+        ++ lib.optional host.ddcMonitor pkgs.ddcutil;
 
-      services.displayManager.noctalia-greeter = {
-        enable = true;
+        nix.settings = {
+          extra-substituters = [ "https://noctalia.cachix.org" ];
+          extra-trusted-public-keys = [
+            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+          ];
+        };
 
-        settings = {
-          appearance.scheme = "Catppuccin";
-          cursor = {
-            theme = "catppuccin-mocha-rosewater-cursors";
-            # See: https://github.com/nix-community/stylix/issues/2223
-            path = "${
-              inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
-            }/share/icons";
-            size = 24;
+        services = {
+          ddccontrol.enable = true;
+          displayManager.noctalia-greeter = {
+            enable = true;
+
+            settings = {
+              appearance.scheme = "Catppuccin";
+              cursor = {
+                theme = "catppuccin-mocha-rosewater-cursors";
+                # See: https://github.com/nix-community/stylix/issues/2223
+                path = "${
+                  inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
+                }/share/icons";
+                size = 24;
+              };
+            };
           };
         };
       };
-    };
 
     homeManager = {
       imports = [ inputs.noctalia.homeModules.default ];
@@ -72,7 +81,7 @@
           };
 
           brightness = {
-            enable_ddcutil = true;
+            enable_ddcutil = host.ddcMonitor;
             minimum_brightness = 0.01;
           };
 

@@ -3,7 +3,7 @@
   den.aspects.plumsail = {
     includes = [
       (<den/unfree> [ "slack" ])
-      <secureframe>
+      # <secureframe>
     ];
 
     nixos = {

@@ -3,6 +3,7 @@
   den.hosts.x86_64-linux.nixos = {
     users.raidorev = { };
     gpuPowerLimit = 230;
+    ddcMonitor = true;
   };
   den.hosts.x86_64-linux.laptop.users.raidorev = { };
 
