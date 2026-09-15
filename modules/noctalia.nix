@@ -37,21 +37,18 @@
           ];
         };
 
-        services = {
-          ddccontrol.enable = true;
-          displayManager.noctalia-greeter = {
-            enable = true;
+        services.displayManager.noctalia-greeter = {
+          enable = true;
 
-            settings = {
-              appearance.scheme = "Catppuccin";
-              cursor = {
-                theme = "catppuccin-mocha-rosewater-cursors";
-                # See: https://github.com/nix-community/stylix/issues/2223
-                path = "${
-                  inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
-                }/share/icons";
-                size = 24;
-              };
+          settings = {
+            appearance.scheme = "Catppuccin";
+            cursor = {
+              theme = "catppuccin-mocha-rosewater-cursors";
+              # See: https://github.com/nix-community/stylix/issues/2223
+              path = "${
+                inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
+              }/share/icons";
+              size = 24;
             };
           };
         };
