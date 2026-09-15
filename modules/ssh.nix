@@ -3,14 +3,16 @@
     homeManager = {
       programs.ssh = {
         enable = true;
-        matchBlocks = {
+        enableDefaultConfig = false;
+
+        settings = {
           "github.com" = {
-            identityFile = "~/.ssh/id_ed25519";
-            user = "git";
+            IdentityFile = "~/.ssh/id_ed25519";
+            User = "git";
           };
           "porygon.vitalya.me" = {
-            identityFile = "~/.ssh/id_rsa";
-            user = "sanyasuper2002";
+            IdentityFile = "~/.ssh/id_rsa";
+            User = "sanyasuper2002";
           };
         };
       };

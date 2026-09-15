@@ -30,14 +30,14 @@
 
       programs.ssh = {
         enable = true;
-        matchBlocks = {
+        settings = {
           "vs-ssh.visualstudio.com" = {
-            identityFile = "~/.ssh/id_rsa_plumsail";
-            user = "plumsail";
+            IdentityFile = "~/.ssh/id_rsa_plumsail";
+            User = "plumsail";
           };
           "ssh.dev.azure.com" = {
-            identityFile = "~/.ssh/id_rsa_plumsail";
-            user = "git";
+            IdentityFile = "~/.ssh/id_rsa_plumsail";
+            User = "git";
           };
         };
       };
