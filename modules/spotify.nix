@@ -1,5 +1,7 @@
-{ __findFile, ... }:
+{ __findFile, inputs, ... }:
 {
+  flake-file.inputs.spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
   den.aspects.spotify = {
     includes = [
       # Shame on you, unfree software that I still use for some reason
@@ -14,12 +16,9 @@
       };
     };
 
-    homeManager = { pkgs, ... }: {
-      services.spotifyd.enable = true;
-
-      home = {
-        packages = with pkgs; [ spotify ];
-      };
+    homeManager = {
+      imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
+      programs.spicetify.enable = true;
     };
   };
 }
