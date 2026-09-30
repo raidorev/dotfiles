@@ -9,9 +9,7 @@
     };
 
     homeManager = { pkgs, ... }: {
-      nixpkgs.overlays = [ inputs.llm-agents.overlays.shared-nixpkgs ];
-
-      home.packages = with pkgs.llm-agents; [
+      home.packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
         claude-code
         claude-desktop
         codex
