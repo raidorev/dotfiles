@@ -4,7 +4,6 @@
     includes = [
       <hosts/base>
       <podman>
-      <amdgpu-firmware-fix>
     ];
 
     nixos = {

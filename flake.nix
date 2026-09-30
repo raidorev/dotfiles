@@ -29,7 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
-    nixpkgs-linux-firmware-fix.url = "github:NixOS/nixpkgs/a831408e6378bc02ebf8cc09b52c96ca86f6bab4";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
