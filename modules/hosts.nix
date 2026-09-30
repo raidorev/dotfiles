@@ -29,6 +29,8 @@
         vim
         wget
       ];
+      zramSwap.enable = true;
+      programs.nix-ld.enable = true;
     };
   };
 }

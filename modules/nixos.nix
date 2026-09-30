@@ -10,10 +10,6 @@
 
     nixos = {
       imports = [ ../hosts/pc/hardware-configuration.nix ];
-
-      zramSwap.enable = true;
-
-      programs.nix-ld.enable = true;
     };
 
     homeManager = { config, ... }: {
