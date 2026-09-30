@@ -16,6 +16,7 @@
       <noctalia>
       <helium>
       <fastfetch>
+      <llms>
       <vesktop>
       <kenku-fm>
       <jetbrains>
@@ -38,7 +39,6 @@
 
       # Shame on you, unfree software that I still use for some reason
       (<den/unfree> [
-        "claude-code"
         "obsidian"
         "osu-lazer-bin"
       ])
@@ -69,7 +69,6 @@
 
           kooha
 
-          claude-code
           obsidian
           kitty
           calibre
