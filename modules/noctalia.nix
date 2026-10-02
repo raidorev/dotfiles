@@ -62,6 +62,7 @@
 
       programs.noctalia = {
         enable = true;
+        systemd.enable = true;
         settings = {
           wallpaper.enable = true;
           theme = {

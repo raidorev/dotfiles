@@ -52,7 +52,6 @@ in
       programs.niri.settings = {
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-        spawn-at-startup = [ { command = [ "noctalia" ]; } ];
         debug.honor-xdg-activation-with-invalid-serial = [ ];
         input = {
           keyboard = {
