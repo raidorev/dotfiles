@@ -30,6 +30,7 @@
       <zathura>
       <qbittorrent>
       <superfile>
+      <flatpak>
 
       <steam>
 
