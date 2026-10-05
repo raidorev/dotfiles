@@ -58,7 +58,7 @@ in
             numlock = true;
             xkb = {
               layout = "us,ru";
-              options = "grp:alt_shift_toggle";
+              options = "grp:caps_toggle";
             };
           };
           focus-follows-mouse.enable = true;
@@ -225,7 +225,8 @@ in
           "Mod+Ctrl+8".action.move-column-to-workspace = 8;
           "Mod+Ctrl+9".action.move-column-to-workspace = 9;
 
-          "Alt+Tab".action.focus-workspace-previous = { };
+          "Alt+Tab".action.spawn = noctalia "window-switcher hold";
+          "Alt+Shift+Tab".action.spawn = noctalia "window-switcher hold";
 
           "Mod+Comma".action.consume-window-into-column = { };
           "Mod+Period".action.expel-window-from-column = { };
