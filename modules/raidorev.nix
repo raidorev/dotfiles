@@ -13,6 +13,7 @@
       <zed>
       <stylix>
       <niri>
+      <umbriel>
       <noctalia>
       <helium>
       <fastfetch>

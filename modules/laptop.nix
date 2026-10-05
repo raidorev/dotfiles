@@ -9,5 +9,7 @@
     nixos = {
       imports = [ ../hosts/laptop/hardware-configuration.nix ];
     };
+
+    homeManager.programs.umbriel.settings.output."eDP-1".scale = 1.5;
   };
 }

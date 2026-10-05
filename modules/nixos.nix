@@ -20,6 +20,7 @@
         };
         backdrop-color = config.lib.stylix.colors.base00;
       };
+      programs.umbriel.settings.output."DP-1".mode = "2560x1440";
     };
   };
 }
