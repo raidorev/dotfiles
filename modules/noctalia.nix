@@ -110,6 +110,7 @@
 
           shell = {
             niri_overview_type_to_launch_enabled = true;
+            window_switcher.mru = true;
             panel = {
               open_near_click_control_center = true;
               open_near_click_launcher = true;
