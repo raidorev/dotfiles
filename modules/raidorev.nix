@@ -89,6 +89,7 @@
           osu-lazer-bin
 
           qimgv
+          wtype
         ];
       };
     };
