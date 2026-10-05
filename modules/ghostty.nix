@@ -8,6 +8,9 @@
         systemd.enable = true;
         settings = {
           shell-integration-features = "ssh-env,ssh-terminfo";
+          keybind = [
+            "super+ctrl+shift+equal=equalize_splits"
+          ];
         };
       };
     };
