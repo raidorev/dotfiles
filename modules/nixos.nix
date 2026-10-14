@@ -6,6 +6,7 @@
       <podman>
       <tailscale>
       <wifi>
+      <wayland>
     ];
 
     nixos = {

@@ -4,6 +4,7 @@
     includes = [
       <hosts/base>
       <podman>
+      <wayland>
     ];
 
     nixos = {

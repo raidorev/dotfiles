@@ -24,27 +24,27 @@
       <libvirt>
       <samba>
 
+      <cli-tools>
       <direnv>
       <nix-tools>
       <sops>
       <thunar>
-      <rclone>
+      # <rclone>
       <zathura>
       <qbittorrent>
       <superfile>
       <flatpak>
 
+      <media>
+      <obsidian>
+      <thunderbird>
+
+      <gaming>
       <steam>
 
       <spotify>
 
       <plumsail>
-
-      # Shame on you, unfree software that I still use for some reason
-      (<den/unfree> [
-        "obsidian"
-        "osu-lazer-bin"
-      ])
     ];
 
     user.extraGroups = [ "input" ];
@@ -55,44 +55,13 @@
       # The handlers themselves live with the app that provides them.
       xdg.mimeApps.enable = true;
 
-      home = {
-        sessionVariables = {
-          NIXOS_OZONE_WL = "1";
-          ELECTRON_OZONE_PLATFORM_HINT = "auto";
-        };
-        packages = with pkgs; [
-          eza
-          ripgrep
-          fd
-          bat
-          jq
-          htop
-          telegram-desktop
-          prismlauncher
-
-          kooha
-
-          obsidian
-          kitty
-          calibre
-
-          tuxedo
-
-          vlc
-
-          lazyjournal
-
-          unetbootin
-
-          super-productivity
-
-          parabolic
-          osu-lazer-bin
-
-          qimgv
-          wtype
-        ];
-      };
+      home.packages = with pkgs; [
+        telegram-desktop
+        kitty
+        calibre
+        unetbootin
+        super-productivity
+      ];
     };
   };
 }
