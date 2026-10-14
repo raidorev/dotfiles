@@ -8,60 +8,25 @@
 
       <git>
       <ssh>
-      <ghostty>
-      <firefox>
-      <zed>
-      <stylix>
-      <niri>
-      <umbriel>
-      <noctalia>
-      <helium>
       <fastfetch>
-      <llms>
-      <vesktop>
-      <kenku-fm>
-      <jetbrains>
-      <libvirt>
-      <samba>
 
       <cli-tools>
       <direnv>
       <nix-tools>
       <sops>
-      <thunar>
       # <rclone>
-      <zathura>
-      <qbittorrent>
       <superfile>
-      <flatpak>
-
-      <media>
-      <obsidian>
-      <thunderbird>
-
-      <gaming>
-      <steam>
-
-      <spotify>
-
-      <plumsail>
     ];
 
-    user.extraGroups = [ "input" ];
-
-    homeManager = { pkgs, ... }: {
-      targets.genericLinux.nixGL.vulkan.enable = true;
-
-      # The handlers themselves live with the app that provides them.
-      xdg.mimeApps.enable = true;
-
-      home.packages = with pkgs; [
-        telegram-desktop
-        kitty
-        calibre
-        unetbootin
-        super-productivity
+    user = {
+      extraGroups = [ "input" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBj0qBGWNXOCJCmEQf+mxyeeEdkndxs7dzk/I6DXTfJe raidorev@raidorev"
       ];
+    };
+
+    homeManager = {
+      targets.genericLinux.nixGL.vulkan.enable = true;
     };
   };
 }

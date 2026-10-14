@@ -1,14 +1,14 @@
 { __findFile, ... }:
 {
-  den.aspects.laptop = {
+  den.aspects.volo = {
     includes = [
-      <hosts/base>
+      <hosts/desktop>
+      <nvidia>
       <podman>
-      <wayland>
     ];
 
     nixos = {
-      imports = [ ../hosts/laptop/hardware-configuration.nix ];
+      imports = [ ./_hardware-configuration.nix ];
     };
 
     homeManager.programs.umbriel.settings.output."eDP-1".scale = 1.5;

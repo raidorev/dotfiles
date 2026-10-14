@@ -17,6 +17,11 @@
     nixos =
       { config, lib, ... }:
       {
+        boot.kernelParams = [
+          "nvidia_drm.modeset=1"
+          "nvidia_drm.fbdev=1"
+          "initcall_blacklist=simpledrm_platform_driver_init"
+        ];
         boot.initrd.kernelModules = [
           "nvidia"
           "nvidia_modeset"

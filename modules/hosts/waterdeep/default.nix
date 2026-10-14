@@ -1,16 +1,15 @@
 { __findFile, ... }:
 {
-  den.aspects.nixos = {
+  den.aspects.waterdeep = {
     includes = [
-      <hosts/base>
+      <hosts/desktop>
+      <nvidia>
       <podman>
-      <tailscale>
       <wifi>
-      <wayland>
     ];
 
     nixos = {
-      imports = [ ../hosts/pc/hardware-configuration.nix ];
+      imports = [ ./_hardware-configuration.nix ];
     };
 
     homeManager = { config, ... }: {
