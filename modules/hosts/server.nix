@@ -4,6 +4,9 @@
     includes = [ <hosts/base> ];
 
     nixos = {
+      security.sudo.wheelNeedsPassword = false;
+      nix.settings.trusted-users = [ "@wheel" ];
+
       services.openssh = {
         enable = true;
         settings = {

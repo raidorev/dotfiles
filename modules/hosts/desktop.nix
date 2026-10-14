@@ -11,7 +11,10 @@
 
     nixos = { pkgs, ... }: {
       boot = {
-        loader.limine.resolution = "2560x1440";
+        loader = {
+          limine.resolution = "2560x1440";
+          efi.canTouchEfiVariables = true;
+        };
         plymouth.enable = true;
       };
       environment.systemPackages = [ pkgs.trayscale ];

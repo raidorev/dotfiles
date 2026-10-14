@@ -6,8 +6,7 @@
     ddcMonitor = true;
   };
   den.hosts.x86_64-linux.volo.users.raidorev = { };
-  # Enable once modules/hosts/icewind/_hardware-configuration.nix exists.
-  # den.hosts.x86_64-linux.icewind.users.raidorev = { };
+  den.hosts.x86_64-linux.icewind.users.raidorev = { };
 
   den.aspects.hosts.base = {
     includes = [
