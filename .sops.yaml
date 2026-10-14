@@ -1,7 +1,14 @@
 keys:
   - &raidorev age1glvn9z4mzpelkhjuyfzj94fs9td673l5ysfrssvqm0umawgc0gvqx4aznj
+  # Derived from /etc/ssh/ssh_host_ed25519_key.pub via ssh-to-age.
+  - &icewind age10fl9ydd9vnkjw4q4mfj00cyqs072xfl6m9lkz74gd6hnnxkap4jqzcr9eg
 
 creation_rules:
+  - path_regex: ^sops/icewind\.yaml$
+    key_groups:
+      - age:
+          - *raidorev
+          - *icewind
   - path_regex: ^sops/.*\.yaml$
     key_groups:
       - age:

@@ -6,6 +6,7 @@
       <hosts/server>
       <disko>
       <podman>
+      <firefly-iii>
     ];
 
     nixos = {

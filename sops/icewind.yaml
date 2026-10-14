@@ -1,0 +1,26 @@
+firefly-iii:
+    app-key: ENC[AES256_GCM,data:okujex6srOKCWOP2zP5p7gQI8LwJKpirxLHn5HF6Zxw=,iv:LOT9jW26owMRm/umT/oOIOg5Ba/lh8ccZBkjRgMf7aY=,tag:0xmVcbksMnpdMO3DPwAwrA==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1ZzlwMmRHRkdJOWcxVzl0
+            VWw0ckhNRDc2RHk2aFdjVUlJL1JKZjhaVlJjCm81U3BrSU4wVWVrM3E2UWRSdDFq
+            R2NidE5QSU9rWlV1VUx2RTRaMTdQbm8KLS0tIG9VUnNEVzl2bjhvbFNDck1xOEEz
+            QXNuc0pXL3dtaHVPVUFrVmhvWXJXOTgKKo618wnHBEg1nGaUNg9CD4+aNdZ5mYuW
+            22SU5bL2KW0CzIy7RcTh2jCeGbToZ3Q15/1QJyRuFj0IeNSqYg6qaQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1glvn9z4mzpelkhjuyfzj94fs9td673l5ysfrssvqm0umawgc0gvqx4aznj
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaRU9TMG5hYWdlNk5iS1Jo
+            c2xoMDJ3Tmg4WmlpbnVzY25rbmpzOEpPSkd3CjFoZFYxZGZEbWg3dk91K0ZIMHRo
+            VmNaOWU1NHNsaGJBSkhsVjAwMG1KZTQKLS0tIGdLMGJVSjVHVVNCU2NnNHFWbXdU
+            VHQ2N2k0Y096Y3BiNHNuTk5sM2pIUFkKHvZLeaSHx55zlXkcAkctkzAEv7/66ujo
+            uG1LzvCY5sRF0dlLHSaNyZE0AmSKtWvSlYniRab387OtfQS/K9SGbQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age10fl9ydd9vnkjw4q4mfj00cyqs072xfl6m9lkz74gd6hnnxkap4jqzcr9eg
+    lastmodified: "2026-10-14T22:50:25Z"
+    mac: ENC[AES256_GCM,data:tIV4t/2z/v7isIbOOiwj59q+ZpKFGVMzxdJwC/W63/1TX6C2nKLOOaR4pjX1NgoGf3jS+3WVFNjP0vrTww+8+cGobOXgfaxttu13QqbL1dqhn0d6iQTqFyfF4TK0lIFiiB14eNkr56+rdUWkVgwS7BHHcNNWRQo2OafrhZawTjY=,iv:ptv09LLfD3eJU1F0tsAOKV7ih0vbjX85daURsuMyabs=,tag:h8DuPVmaoJ0IrJG5loY1jA==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.13.3

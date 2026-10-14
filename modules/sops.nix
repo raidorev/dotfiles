@@ -6,10 +6,10 @@
   };
 
   den.aspects.sops = { user, ... }: {
-    nixos = { config, ... }: {
+    nixos = { config, lib, ... }: {
       imports = [ inputs.sops-nix.nixosModules.sops ];
       sops = {
-        age.sshKeyPaths = [ "${config.users.users.${user.userName}.home}/.ssh/id_ed25519" ];
+        age.sshKeyPaths = lib.mkDefault [ "${config.users.users.${user.userName}.home}/.ssh/id_ed25519" ];
         gnupg.sshKeyPaths = [ ];
       };
     };
