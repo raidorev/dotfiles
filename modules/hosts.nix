@@ -23,7 +23,6 @@
 
     nixos = { pkgs, ... }: {
       networking.networkmanager.enable = true;
-      programs.amnezia-vpn.enable = true;
       documentation.man.enable = false;
       environment.systemPackages = with pkgs; [
         vim
