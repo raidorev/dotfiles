@@ -1,0 +1,8 @@
+keys:
+  - &raidorev age1glvn9z4mzpelkhjuyfzj94fs9td673l5ysfrssvqm0umawgc0gvqx4aznj
+
+creation_rules:
+  - path_regex: ^sops/.*\.yaml$
+    key_groups:
+      - age:
+          - *raidorev
