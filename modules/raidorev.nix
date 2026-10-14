@@ -26,6 +26,7 @@
 
       <direnv>
       <nix-tools>
+      <sops>
       <thunar>
       <rclone>
       <zathura>
