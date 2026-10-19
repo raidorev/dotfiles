@@ -50,7 +50,7 @@ in
               options = "grp:caps_toggle";
               numlock_toggle = true;
             };
-            focus.follows_mouse = true;
+            focus.follows_mouse = false;
           };
 
           appearance = {
