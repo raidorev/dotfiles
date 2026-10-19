@@ -7,6 +7,7 @@
       <disko>
       <podman>
       <firefly-iii>
+      <firefly-mcp>
     ];
 
     nixos = {
