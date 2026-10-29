@@ -12,6 +12,7 @@ let
       "au-plumsail.com"
       "admin.plumsail.io"
       "a-titov.plumsail.io"
+      "jusper.plumsail.io"
     ];
   };
 
@@ -150,7 +151,27 @@ in
       };
 
     homeManager = { pkgs, ... }: {
-      home.packages = [ pkgs.slack ];
+      home.packages = with pkgs; [
+        slack
+        mkcert
+        nssTools
+        (writeShellApplication {
+          name = "plumsail-localhost-cert";
+          runtimeInputs = [
+            mkcert
+            nssTools
+          ];
+          text = ''
+            dir="''${XDG_DATA_HOME:-$HOME/.local/share}/plumsail-certs"
+            mkdir -p "$dir"
+            mkcert -install
+            mkcert -cert-file "$dir/localhost.pem" -key-file "$dir/localhost-key.pem" \
+              localhost 127.0.0.1 ::1
+            echo "Certificate: $dir/localhost.pem"
+            echo "Key:         $dir/localhost-key.pem"
+          '';
+        })
+      ];
 
       programs.zoxide.enable = true;
 
