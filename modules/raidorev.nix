@@ -21,7 +21,7 @@
     user = {
       extraGroups = [ "input" ];
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBj0qBGWNXOCJCmEQf+mxyeeEdkndxs7dzk/I6DXTfJe raidorev@raidorev"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMeWxlo7NgypRpXx5mjOgESmdfquy0ofICN6i29WTcf0"
       ];
     };
 
