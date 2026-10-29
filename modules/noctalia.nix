@@ -53,111 +53,119 @@
         };
       };
 
-    homeManager = {
-      imports = [ inputs.noctalia.homeModules.default ];
+    homeManager =
+      let
+        hostConfig = ./hosts + "/${host.name}/_noctalia-config.toml";
+      in
+      {
+        imports = [ inputs.noctalia.homeModules.default ];
 
-      home.file.".face".source = ../profile.png;
-      home.file.wallpapers.source = ../wallpapers;
+        home.file.".face".source = ../profile.png;
+        home.file.wallpapers.source = ../wallpapers;
 
-      programs.noctalia = {
-        enable = true;
-        systemd.enable = true;
-        settings = {
-          wallpaper.enable = true;
-          theme = {
-            builtin = "Catppuccin";
-            templates = {
-              enable_builtin_templates = false;
-              enable_community_templates = false;
-            };
-          };
-          backdrop = {
-            enabled = true;
-            blur_intensity = 0.5;
-            tint_intensity = 0.3;
-          };
+        programs.noctalia = {
+          enable = true;
+          systemd.enable = true;
+          settings =
+            if builtins.pathExists hostConfig then
+              builtins.fromTOML (builtins.readFile hostConfig)
+            else
+              {
+                wallpaper.enable = true;
+                theme = {
+                  builtin = "Catppuccin";
+                  templates = {
+                    enable_builtin_templates = false;
+                    enable_community_templates = false;
+                  };
+                };
+                backdrop = {
+                  enabled = true;
+                  blur_intensity = 0.5;
+                  tint_intensity = 0.3;
+                };
 
-          brightness = {
-            enable_ddcutil = host.ddcMonitor;
-            minimum_brightness = 0.01;
-          };
+                brightness = {
+                  enable_ddcutil = host.ddcMonitor;
+                  minimum_brightness = 0.01;
+                };
 
-          idle.behavior = {
-            lock = {
-              timeout = 300;
-              action = "lock";
-              enabled = true;
-            };
+                idle.behavior = {
+                  lock = {
+                    timeout = 300;
+                    action = "lock";
+                    enabled = true;
+                  };
 
-            screen-off = {
-              timeout = 350;
-              action = "screen_off";
-              enabled = true;
-            };
-          };
+                  screen-off = {
+                    timeout = 350;
+                    action = "screen_off";
+                    enabled = true;
+                  };
+                };
 
-          dock = {
-            auto_hide = true;
-            enabled = true;
-            reserve_space = false;
-          };
+                dock = {
+                  auto_hide = true;
+                  enabled = true;
+                  reserve_space = false;
+                };
 
-          location.address = "St Petersburg";
+                location.address = "St Petersburg";
 
-          plugins = {
-            enabled = [ "noctalia/bongocat" ];
-          };
+                plugins = {
+                  enabled = [ "noctalia/bongocat" ];
+                };
 
-          shell = {
-            niri_overview_type_to_launch_enabled = true;
-            window_switcher.mru = true;
-            panel = {
-              open_near_click_control_center = true;
-              open_near_click_launcher = true;
-            };
-          };
+                shell = {
+                  niri_overview_type_to_launch_enabled = true;
+                  window_switcher.mru = true;
+                  panel = {
+                    open_near_click_control_center = true;
+                    open_near_click_launcher = true;
+                  };
+                };
 
-          widget = {
-            launcher = {
-              glyph = "cat";
-            };
-            workspaces = {
-              empty_color = "surface";
-              occupied_color = "surface";
-            };
-            cat.type = "noctalia/bongocat:cat";
-          };
+                widget = {
+                  launcher = {
+                    glyph = "cat";
+                  };
+                  workspaces = {
+                    empty_color = "surface";
+                    occupied_color = "surface";
+                  };
+                  cat.type = "noctalia/bongocat:cat";
+                };
 
-          bar = {
-            default = {
-              margin_ends = 0;
-              concave_edge_corners = true;
-              radius = 12;
+                bar = {
+                  default = {
+                    margin_ends = 0;
+                    concave_edge_corners = true;
+                    radius = 12;
 
-              start = [
-                "launcher"
-                "weather"
-                "sysmon"
-                "workspaces"
-                "media"
-                "cat"
-              ];
-              center = [ "active_window" ];
-              end = [
-                "tray"
-                "notifications"
-                "clipboard"
-                "network"
-                "bluetooth"
-                "volume"
-                "brightness"
-                "control-center"
-                "session"
-              ];
-            };
-          };
+                    start = [
+                      "launcher"
+                      "weather"
+                      "sysmon"
+                      "workspaces"
+                      "media"
+                      "cat"
+                    ];
+                    center = [ "active_window" ];
+                    end = [
+                      "tray"
+                      "notifications"
+                      "clipboard"
+                      "network"
+                      "bluetooth"
+                      "volume"
+                      "brightness"
+                      "control-center"
+                      "session"
+                    ];
+                  };
+                };
+              };
         };
       };
-    };
   };
 }
