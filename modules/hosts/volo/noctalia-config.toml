@@ -16,10 +16,10 @@ end = [
     "battery",
     "session",
 ]
-margin_ends = 0
 radius = 12
-radius_top_left = 0
-radius_top_right = 0
+radius_top_left = 12
+radius_top_right = 12
+padding = 8
 start = [
     "launcher",
     "weather",
@@ -40,7 +40,6 @@ fill = "surface_variant"
 id = "g1"
 members = ["tray", "notifications", "clipboard"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -51,7 +50,6 @@ fill = "surface_variant"
 id = "g2"
 members = ["network", "bluetooth"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -62,7 +60,6 @@ fill = "surface_variant"
 id = "g3"
 members = ["volume", "brightness"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -73,13 +70,16 @@ fill = "surface_variant"
 id = "g4"
 members = ["date", "clock"]
 opacity = 1.0
-padding = 6.0
 
 [brightness]
 enable_ddcutil = false
 minimum_brightness = 0.01
 
 [dock]
+radius_bottom_left = 12
+radius_bottom_right = 12
+radius_top_left = 12
+radius_top_right = 12
 auto_hide = true
 background_opacity = 1.0
 enabled = true
@@ -170,6 +170,7 @@ offset_x = 8
 position = "bottom_right"
 
 [osd]
+offset_x = 8
 background_opacity = 1.0
 
 [plugins]

@@ -19,6 +19,7 @@ margin_ends = 100
 radius = 12
 radius_top_left = 12
 radius_top_right = 12
+padding = 8
 start = [
     "launcher",
     "weather",
@@ -39,7 +40,6 @@ fill = "surface_container"
 id = "g1"
 members = ["media", "cat"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -50,7 +50,6 @@ fill = "surface_container"
 id = "g2"
 members = ["tray", "notifications", "clipboard"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -61,7 +60,6 @@ fill = "surface_container"
 id = "g3"
 members = ["network", "bluetooth"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -72,7 +70,6 @@ fill = "surface_container"
 id = "g4"
 members = ["volume", "brightness"]
 opacity = 1.0
-padding = 6.0
 
 [[bar.default.capsule_group]]
 accordion = false
@@ -83,7 +80,6 @@ fill = "surface_container"
 id = "g5"
 members = ["date", "clock"]
 opacity = 1.0
-padding = 6.0
 
 [brightness]
 enable_ddcutil = true
@@ -106,6 +102,10 @@ visible = true
 [desktop_widgets.widget]
 
 [dock]
+radius_bottom_left = 12
+radius_bottom_right = 12
+radius_top_left = 12
+radius_top_right = 12
 auto_hide = false
 background_opacity = 1.0
 enabled = true
@@ -195,9 +195,11 @@ temperature_night = 4300
 
 [notification]
 background_opacity = 1.0
+offset_x = 8
 position = "bottom_right"
 
 [osd]
+offset_x = 8
 background_opacity = 1.0
 
 [plugin_settings."avivbintangaringga/nix-monitor"]
@@ -235,7 +237,7 @@ session_position = "center"
 
 [shell.screen_corners]
 enabled = true
-size = 16
+size = 12
 
 [shell.screenshot]
 confirm_region = true

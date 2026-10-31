@@ -56,7 +56,7 @@ in
           appearance = {
             prefer_no_csd = true;
             border_width = 2;
-            corner_radius = 8;
+            corner_radius = 12;
           };
 
           colors = with config.lib.stylix.colors.withHashtag; {
