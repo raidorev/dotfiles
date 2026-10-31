@@ -1,6 +1,6 @@
 { inputs, lib, ... }:
 let
-  noctalia = cmd: "spawn:noctalia msg ${cmd}";
+  noctalia = cmd: "spawn noctalia msg ${cmd}";
 
   lockedSpawn = cmd: {
     action = noctalia cmd;
@@ -19,8 +19,8 @@ let
 
   workspaceBinds = lib.mergeAttrsList (
     map (n: {
-      "Mod+${toString n}" = "workspace-switch:${toString n}";
-      "Mod+Ctrl+${toString n}" = "column-move-to-workspace:${toString n}";
+      "Mod+${toString n}" = "workspace-switch ${toString n}";
+      "Mod+Ctrl+${toString n}" = "column-move-to-workspace ${toString n}";
     }) (lib.range 1 9)
   );
 in
@@ -95,7 +95,7 @@ in
               repeat = false;
             };
 
-            "Mod+T" = once "spawn:ghostty +new-window";
+            "Mod+T" = once "spawn ghostty +new-window";
             "Mod+D" = once (noctalia "panel-toggle launcher");
             "Super+Alt+L" = once (noctalia "session lock");
             "Mod+P" = once (noctalia "panel-toggle session");
@@ -172,10 +172,10 @@ in
             "Mod+Shift+F" = once "window-toggle-fullscreen";
             "Mod+C" = "column-center";
 
-            "Mod+Minus" = "window-modify-primary-extent:-0.1";
-            "Mod+Equal" = "window-modify-primary-extent:0.1";
-            "Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1";
-            "Mod+Shift+Equal" = "window-modify-secondary-extent:0.1";
+            "Mod+Minus" = "window-modify-primary-extent -0.1";
+            "Mod+Equal" = "window-modify-primary-extent 0.1";
+            "Mod+Shift+Minus" = "window-modify-secondary-extent -0.1";
+            "Mod+Shift+Equal" = "window-modify-secondary-extent 0.1";
 
             "Print" = once (noctalia "screenshot-region");
             "Ctrl+Print" = once (noctalia "screenshot-fullscreen");
