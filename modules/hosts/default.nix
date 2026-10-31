@@ -4,8 +4,12 @@
     users.raidorev = { };
     gpuPowerLimit = 230;
     ddcMonitor = true;
+    noctaliaConfig = ./waterdeep/noctalia-config.toml;
   };
-  den.hosts.x86_64-linux.volo.users.raidorev = { };
+  den.hosts.x86_64-linux.volo = {
+    users.raidorev = { };
+    noctaliaConfig = ./volo/noctalia-config.toml;
+  };
   den.hosts.x86_64-linux.icewind.users.raidorev = { };
 
   den.aspects.hosts.base = {

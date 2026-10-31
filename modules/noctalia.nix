@@ -6,6 +6,12 @@
     description = "Whether this host drives a monitor over DDC/CI.";
   };
 
+  den.schema.host.options.noctaliaConfig = lib.mkOption {
+    type = lib.types.nullOr lib.types.path;
+    default = null;
+    description = "Exported noctalia config.tom.";
+  };
+
   flake-file.inputs = {
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -17,155 +23,68 @@
     };
   };
 
-  den.aspects.noctalia = { host, user, ... }: {
-    nixos =
-      { pkgs, lib, ... }:
-      {
-        imports = [
-          inputs.noctalia-greeter.nixosModules.default
-        ];
-        environment.systemPackages = [
-          inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        ]
-        ++ lib.optional host.ddcMonitor pkgs.ddcutil;
+  den.aspects.noctalia =
+    { host, user, ... }:
+    let
+      configFile = host.noctaliaConfig;
+      missing = configFile != null && !builtins.pathExists configFile;
+      useConfig = configFile != null && !missing;
+    in
+    {
+      user.extraGroups = lib.optional host.ddcMonitor "i2c";
 
-        nix.settings = {
-          extra-substituters = [ "https://noctalia.cachix.org" ];
-          extra-trusted-public-keys = [
-            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      nixos =
+        { pkgs, lib, ... }:
+        {
+          imports = [
+            inputs.noctalia-greeter.nixosModules.default
           ];
-        };
+          environment.systemPackages = [
+            inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+          ]
+          ++ lib.optional host.ddcMonitor pkgs.ddcutil;
 
-        services.displayManager.noctalia-greeter = {
-          enable = true;
+          hardware.i2c.enable = host.ddcMonitor;
 
-          settings = {
-            appearance.scheme = "Catppuccin";
-            cursor = {
-              theme = "catppuccin-mocha-rosewater-cursors";
-              # See: https://github.com/nix-community/stylix/issues/2223
-              path = "${
-                inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
-              }/share/icons";
-              size = 24;
+          nix.settings = {
+            extra-substituters = [ "https://noctalia.cachix.org" ];
+            extra-trusted-public-keys = [
+              "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+            ];
+          };
+
+          services.displayManager.noctalia-greeter = {
+            enable = true;
+
+            settings = {
+              appearance.scheme = "Catppuccin";
+              cursor = {
+                theme = "catppuccin-mocha-rosewater-cursors";
+                # See: https://github.com/nix-community/stylix/issues/2223
+                path = "${
+                  inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.catppuccin-cursors.mochaRosewater
+                }/share/icons";
+                size = 24;
+              };
             };
           };
         };
-      };
 
-    homeManager =
-      let
-        hostConfig = ./hosts + "/${host.name}/_noctalia-config.toml";
-      in
-      {
+      homeManager = {
         imports = [ inputs.noctalia.homeModules.default ];
+
+        warnings = lib.optional missing "noctalia: ${toString configFile} not found; falling back to stylix defaults.";
 
         home.file.".face".source = ../profile.png;
         home.file.wallpapers.source = ../wallpapers;
 
+        stylix.targets.noctalia.image.enable = !useConfig;
+
         programs.noctalia = {
           enable = true;
           systemd.enable = true;
-          settings =
-            if builtins.pathExists hostConfig then
-              builtins.fromTOML (builtins.readFile hostConfig)
-            else
-              {
-                wallpaper.enable = true;
-                theme = {
-                  builtin = "Catppuccin";
-                  templates = {
-                    enable_builtin_templates = false;
-                    enable_community_templates = false;
-                  };
-                };
-                backdrop = {
-                  enabled = true;
-                  blur_intensity = 0.5;
-                  tint_intensity = 0.3;
-                };
-
-                brightness = {
-                  enable_ddcutil = host.ddcMonitor;
-                  minimum_brightness = 0.01;
-                };
-
-                idle.behavior = {
-                  lock = {
-                    timeout = 300;
-                    action = "lock";
-                    enabled = true;
-                  };
-
-                  screen-off = {
-                    timeout = 350;
-                    action = "screen_off";
-                    enabled = true;
-                  };
-                };
-
-                dock = {
-                  auto_hide = true;
-                  enabled = true;
-                  reserve_space = false;
-                };
-
-                location.address = "St Petersburg";
-
-                plugins = {
-                  enabled = [ "noctalia/bongocat" ];
-                };
-
-                shell = {
-                  niri_overview_type_to_launch_enabled = true;
-                  window_switcher.mru = true;
-                  panel = {
-                    open_near_click_control_center = true;
-                    open_near_click_launcher = true;
-                  };
-                };
-
-                widget = {
-                  launcher = {
-                    glyph = "cat";
-                  };
-                  workspaces = {
-                    empty_color = "surface";
-                    occupied_color = "surface";
-                  };
-                  cat.type = "noctalia/bongocat:cat";
-                };
-
-                bar = {
-                  default = {
-                    margin_ends = 0;
-                    concave_edge_corners = true;
-                    radius = 12;
-
-                    start = [
-                      "launcher"
-                      "weather"
-                      "sysmon"
-                      "workspaces"
-                      "media"
-                      "cat"
-                    ];
-                    center = [ "active_window" ];
-                    end = [
-                      "tray"
-                      "notifications"
-                      "clipboard"
-                      "network"
-                      "bluetooth"
-                      "volume"
-                      "brightness"
-                      "control-center"
-                      "session"
-                    ];
-                  };
-                };
-              };
+          settings = lib.optionalAttrs useConfig (fromTOML (builtins.readFile configFile));
         };
       };
-  };
+    };
 }
